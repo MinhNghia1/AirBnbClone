@@ -1,0 +1,74 @@
+
+
+.header{
+    --black-color : black;
+
+    position: fixed;
+    width: 100%;
+    .container{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        width: 95%;
+        margin: auto;
+        padding:  1.25rem 0.5rem;
+        .logoBnb{
+        display: flex;
+        align-items: center;
+        span{
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 20px;
+            margin-left: 5px;
+        }
+        }
+        .findRoomUp{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: relative;
+            align-self: center;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            width: 400px;
+            background-color: white;
+            border-radius: 92px;
+            padding: 12px 16px 12px 16px;
+            font-weight: bold;
+            height: 30px;
+            font-size: 12px;
+            cursor: pointer;
+            .textFindHeader2{
+                border-right: 1px solid gray;
+                border-left: 1px solid gray;
+                padding: 6px 20px 0px 20px;
+                
+            }
+            .textFindHeader1{
+                padding: 6px 20px 0px 0px;
+            }
+            .textFindHeader3{
+                padding: 6px 0px 0px 20px;
+            }
+            .searchLogo{
+                margin-left: 20px;
+                background-color: var(--primary);
+                padding: 6px 6px 0px 6px;
+                border-radius: 92px;
+            }
+        }
+        .findRoomDown{
+            display: flex;
+            flex-wrap: wrap;
+            cursor: pointer;
+            justify-content: center;
+            align-items: center;
+            height: 54px;
+            div{
+                margin-left: 35px;
+                font-size: 12px;
+                font-weight: bold;
+            }
+        }
+    }
+}
