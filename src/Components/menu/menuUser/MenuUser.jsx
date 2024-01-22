@@ -6,21 +6,50 @@ import MenuItem from "@mui/material/MenuItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-
 import Tooltip from "@mui/material/Tooltip";
 import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
-
+import { useSelector } from "react-redux";
+import Swal from "sweetalert2";
+import { sigout } from "../../../Slice/AuthSlice/authSlice";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 export default function MenuUser() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+  const { currentUser } = useSelector((state) => {
+    return state.auth;
+  });
+
+  const handleLogout = () => {
+    setAnchorEl(null);
+    Swal.fire({
+      title: "Are you sure?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, SigOut!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Success!",
+          icon: "success",
+        });
+        localStorage.removeItem("currenuser");
+        window.location.reload();
+      }
+    });
+  };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   return (
     <React.Fragment>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
@@ -33,7 +62,15 @@ export default function MenuUser() {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+            {currentUser.user.avatar ? (
+              <img
+                style={{ width: "32px", height: "32px" }}
+                src={currentUser.user.avatar}
+                alt="avatar"
+              />
+            ) : (
+              <Avatar sx={{ width: 32, height: 32 }}>m</Avatar>
+            )}
           </IconButton>
         </Tooltip>
       </Box>
@@ -73,25 +110,28 @@ export default function MenuUser() {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem onClick={handleClose}>
-          <Avatar /> Profile
+          <Avatar />
+          Profile
         </MenuItem>
         <MenuItem onClick={handleClose}>
           <Avatar /> My account
         </MenuItem>
         <Divider />
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <PersonAdd fontSize="small" />
-          </ListItemIcon>
-          Add another account
-        </MenuItem>
+        {currentUser.user.role === "ADMIN" && (
+          <MenuItem onClick={handleClose}>
+            <ListItemIcon>
+              <ManageAccountsIcon />
+            </ListItemIcon>
+            Trang Quản Lý
+          </MenuItem>
+        )}
         <MenuItem onClick={handleClose}>
           <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>
           Settings
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleLogout}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>

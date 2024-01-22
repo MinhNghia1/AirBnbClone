@@ -3,12 +3,29 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import GlobalStyles from "./Components/ScssGlobal/index";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { Provider } from "react-redux";
+import store from "./store";
 const root = ReactDOM.createRoot(document.getElementById("root"));
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#FF385C", // Đổi màu chính
+    },
+    secondary: {
+      main: "#FF385C", // Đổi màu phụ
+    },
+  },
+});
 root.render(
   <React.StrictMode>
-    <GlobalStyles>
-      <App />
-    </GlobalStyles>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles>
+          <App />
+        </GlobalStyles>
+      </ThemeProvider>
+    </Provider>
   </React.StrictMode>
 );
 
