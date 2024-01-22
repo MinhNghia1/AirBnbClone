@@ -4,11 +4,15 @@ import { FaAirbnb } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 import FormHeader from "../Form/FormHeader";
 import { TbWorld } from "react-icons/tb";
-
+import { useSelector } from "react-redux";
 import MenuRegister from "../menu/MenuRegister/MenuRegister";
+import MenuUser from "../menu/menuUser/MenuUser";
 
 export default function Header() {
   const [isShow, setIsShow] = useState(true);
+  const { currentUser } = useSelector((state) => {
+    return state.auth;
+  });
 
   return (
     <div className={styled.header}>
@@ -54,7 +58,7 @@ export default function Header() {
             fontSize={25}
             style={{ padding: "0px 10px", cursor: "pointer", color: "#FF385C" }}
           />
-          <MenuRegister />
+          {currentUser ? <MenuUser /> : <MenuRegister />}
         </div>
       </div>
     </div>

@@ -6,8 +6,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Divider from "@mui/material/Divider";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FaUserCircle } from "react-icons/fa";
-import LoginIcon from "@mui/icons-material/Login";
-import LogoutIcon from "@mui/icons-material/Logout";
+import { useNavigate } from "react-router-dom";
 const StyledMenu = styled((props) => (
   <Menu
     elevation={0}
@@ -46,6 +45,7 @@ const StyledMenu = styled((props) => (
 }));
 
 export default function MenuRegister() {
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -54,7 +54,14 @@ export default function MenuRegister() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+  const handleSigin = () => {
+    setAnchorEl(null);
+    navigate("/SiginUser");
+  };
+  const handleSignUp = () => {
+    setAnchorEl(null);
+    navigate("/SigupUser");
+  };
   return (
     <div>
       <Button
@@ -85,10 +92,10 @@ export default function MenuRegister() {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose} disableRipple>
+        <MenuItem onClick={handleSigin} disableRipple>
           Đăng Nhập
         </MenuItem>
-        <MenuItem onClick={handleClose} disableRipple>
+        <MenuItem onClick={handleSignUp} disableRipple>
           Đăng Ký
         </MenuItem>
         <Divider sx={{ my: 0.5 }} />
