@@ -1,0 +1,1 @@
+.btnFind{display:flex;align-items:center;justify-content:center;background-color:var(--primary);border:none;padding:0;width:10%;height:100%;border-top-right-radius:var(--borderradius);border-bottom-right-radius:var(--borderradius);color:#fff;cursor:pointer}.btnFind:hover{border:1px solid #000}@media screen and (max-width: 460px){.btnFind{width:20%}}

@@ -1,0 +1,14 @@
+.container{
+    margin: 1.25rem auto 0 auto;
+    .grid-item{
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        .roomItem{
+            .topItem{
+            }
+            .btItem{
+            
+            }
+        }
+    }
+}
