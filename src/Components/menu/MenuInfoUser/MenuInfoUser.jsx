@@ -15,9 +15,9 @@ import { FaPlane } from "react-icons/fa";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import { useNavigate } from "react-router-dom";
 import { getUserId } from "../../../Apis/user";
-export default function MenuUser() {
+export default function MenuInfoUser({ obj }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [avatar, setAvatar] = React.useState(null);
+  const [avatarUser, setAvatarUser] = React.useState(null);
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
   const handleClick = (event) => {
@@ -30,14 +30,14 @@ export default function MenuUser() {
   const handlegetUser = async (id) => {
     try {
       const resp = await getUserId(id);
-      setAvatar(resp.avatar);
+      setAvatarUser(resp.avatar);
     } catch (error) {
       console.error(error);
     }
   };
   React.useEffect(() => {
     handlegetUser(currentUser.user.id);
-  }, []);
+  }, [obj]);
   const handleLogout = () => {
     setAnchorEl(null);
     Swal.fire({
@@ -76,10 +76,10 @@ export default function MenuUser() {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            {avatar ? (
+            {avatarUser ? (
               <img
                 style={{ width: "32px", height: "32px", borderRadius: "90px" }}
-                src={avatar}
+                src={avatarUser}
                 alt="avatar"
               />
             ) : (

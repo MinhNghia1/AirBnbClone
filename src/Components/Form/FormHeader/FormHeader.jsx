@@ -5,10 +5,15 @@ import Autocomplete from "@mui/material/Autocomplete";
 import { getLocation } from "../../../Apis/viTri";
 import styled from "./FormHeader.module.scss";
 import InputAdornment from "@mui/material/InputAdornment";
-
-import { useForm, SubmitHandler } from "react-hook-form";
-
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 export default function FormHeader() {
+  const navigate = useNavigate();
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      maViTri: "",
+    },
+  });
   const [locations, setLocation] = useState([]);
   const getListLocation = async () => {
     try {
@@ -20,8 +25,20 @@ export default function FormHeader() {
     getListLocation();
   }, []);
 
+  const handleOptionClick = (event, value) => {
+    // Ngăn chặn sự kiện khi chọn một option
+    event.stopPropagation();
+  };
+  const handleRoomByLocation = (value) => {
+    const viTri = locations.find((item) => value.maViTri === item.tenViTri);
+
+    if (viTri.id) {
+      navigate(`/RoomByCity/${viTri.id}`);
+    }
+  };
   return (
     <Box
+      onSubmit={handleSubmit(handleRoomByLocation)}
       component="form"
       sx={{
         borderRadius: 90,
@@ -36,6 +53,7 @@ export default function FormHeader() {
       autoComplete="off"
     >
       <Autocomplete
+        onChange={(event, value) => handleOptionClick(event, value)}
         disablePortal
         id="combo-box-demo"
         options={locations.map((item) => {
@@ -44,6 +62,7 @@ export default function FormHeader() {
         sx={{ width: { xs: "80%", sm: "25%", md: "35%" } }}
         renderInput={(params) => (
           <TextField
+            {...register("maViTri")}
             autoFocus
             {...params}
             label="Địa Điểm"

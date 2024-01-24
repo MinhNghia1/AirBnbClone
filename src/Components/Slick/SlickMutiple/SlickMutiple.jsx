@@ -17,7 +17,7 @@ import { GiCaveEntrance } from "react-icons/gi";
 import { GiSurfBoard } from "react-icons/gi";
 import { BiSolidPyramid } from "react-icons/bi";
 import { GiUndergroundCave } from "react-icons/gi";
-import styled from "./SlickMutipls.scss";
+
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -50,6 +50,7 @@ function SamplePrevArrow(props) {
     />
   );
 }
+
 export default class SlickMutiple extends Component {
   render() {
     const settings = {
@@ -90,68 +91,68 @@ export default class SlickMutiple extends Component {
     return (
       <div style={{ textAlign: "center", cursor: "pointer" }}>
         <Slider {...settings}>
-          <div className={styled.slickItem}>
+          <div>
             <TbUfo fontSize={30} color="#FF385C" />
             <p>Thật Ấn Tượng</p>
           </div>
-          <div className={styled.slickItem}>
+          <div>
             <FaMountainCity fontSize={30} color="#FF385C" />
             <p>Công Viên Quốc Gia</p>
           </div>
-          <div className={styled.slickItem}>
+          <div>
             <PiSwimmingPoolBold fontSize={30} color="#FF385C" />
             <p>Hồ Bơi Tuyệt Vời</p>
           </div>
-          <div className={styled.slickItem}>
+          <div>
             <GiIsland fontSize={30} color="#FF385C" />
             <p>Đảo</p>
           </div>
-          <div className={styled.slickItem}>
+          <div>
             <TbBeach fontSize={30} color="#FF385C" />
             <p>Bãi Biển</p>
           </div>
-          <div className={styled.slickItem}>
+          <div>
             <MdHome fontSize={30} color="#FF385C" />
             <p>Nhà Nhỏ</p>
           </div>
-          <div className={styled.slickItem}>
+          <div>
             <MdOutlineVilla fontSize={30} color="#FF385C" />
             <p>Thiết Kế</p>
           </div>
-          <div className={styled.slickItem}>
+          <div>
             <FaRegSnowflake fontSize={30} color="#FF385C" />
             <p>Bắc Cực</p>
           </div>
-          <div className={styled.slickItem}>
+          <div>
             <MdCabin fontSize={30} color="#FF385C" />
             <p>Cabin</p>
           </div>
 
-          <div className={styled.slickItem}>
+          <div>
             <TbBeach fontSize={30} color="#FF385C" />
             <p>Ven Hồ</p>
           </div>
-          <div className={styled.slickItem}>
+          <div>
             <MdGolfCourse fontSize={30} color="#FF385C" />
             <p>Chơi Golf</p>
           </div>
-          <div className={styled.slickItem}>
+          <div>
             <CiMap fontSize={30} color="#FF385C" />
             <p>Khung Cảnh Tuyệt Vời</p>
           </div>
-          <div className={styled.slickItem}>
+          <div>
             <GiCaveEntrance fontSize={30} color="#FF385C" />
             <p>Hang Động</p>
           </div>
-          <div className={styled.slickItem}>
+          <div>
             <GiSurfBoard fontSize={30} color="#FF385C" />
             <p>Lướt Sóng</p>
           </div>
-          <div className={styled.slickItem}>
+          <div>
             <BiSolidPyramid fontSize={30} color="#FF385C" />
             <p>Khung Nhà Chữ A</p>
           </div>
-          <div className={styled.slickItem}>
+          <div>
             <GiUndergroundCave fontSize={30} color="#FF385C" />
             <p>Nhà Dưới Lòng Đất</p>
           </div>

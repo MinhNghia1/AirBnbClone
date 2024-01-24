@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "./Header.module.scss";
 import { FaAirbnb } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
@@ -7,17 +7,33 @@ import { TbWorld } from "react-icons/tb";
 import { useSelector } from "react-redux";
 import MenuRegister from "../menu/MenuRegister/MenuRegister";
 import MenuUser from "../menu/menuUser/MenuUser";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
+  const navigate = useNavigate();
   const [isShow, setIsShow] = useState(true);
   const { currentUser } = useSelector((state) => {
     return state.auth;
   });
-
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // Kiểm tra xem sự kiện click có ở ngoài thành phần không
+      const headerElement = document.querySelector(`.${styled.header}`);
+      if (headerElement && !headerElement.contains(event.target)) {
+        setIsShow(true);
+      }
+    };
+    // Gắn trình nghe sự kiện khi thành phần được mount
+    document.addEventListener("click", handleClickOutside);
+    // Dọn dẹp trình nghe sự kiện khi thành phần unmount để tránh rò rỉ bộ nhớ
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
   return (
     <div className={styled.header}>
       <div className={styled.container}>
-        <div className={styled.logoBnb}>
+        <div onClick={() => navigate("/")} className={styled.logoBnb}>
           <FaAirbnb fontSize={40} color="#FF385C" />
           <span>airbnb</span>
         </div>

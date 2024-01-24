@@ -1,0 +1,115 @@
+.account{
+    margin-top: 100px;
+    // position: fixed;
+    .container{
+        width: 85%;
+        margin: auto;
+        .content{
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            .accountLeft{
+                .card{
+                    border: 1px solid gray;
+                    padding: 20px;
+                    border-radius: 10px;
+                    .cardTop{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        height: 100%;
+                        img{
+                            width: 129px;
+                        height: 129px;
+                        border-radius: 9999px;
+                        }
+                        p{
+                            font-size: 12px;
+                           margin: 0px;
+                           text-decoration: underline;
+                           cursor: pointer;
+                        }
+                    }
+                    .cardBody{
+                        
+                        .titleCard{
+                            display: flex;
+                            align-items: center;
+                            img{
+                                width: 30px;
+                            }
+                            p{
+                                font-weight: 600;
+                                font-size: 16px;
+                                margin-left: 10px;
+                            }
+                        }
+                        .textDetail{
+                            p{
+                                margin: 0px 0px 10px 0px;
+                            }
+                            button{
+                                margin-bottom: 10px;
+                                padding: 10px 20px;
+                                background-color: white;
+                                border: 1px solid gray;
+                                border-radius: 10px;
+                                font-weight: 600;
+                                cursor: pointer;
+                                transition: all 0.6s;
+                                &:hover{
+                                    color: white;
+                                    opacity: 1;
+                                    background-color: gray;
+                                }
+                            }
+                        }
+                    }
+                    .cardFooter{
+                        border-top: 1px solid gray;
+                        .titleFooter{
+                            font-weight: 600;
+                            margin-bottom: 0px;
+                        }
+                        .textDetailFooter{
+                            display: flex;
+                            align-items: center;
+                            p{
+                                font-size: 12px;
+                                font-weight: 500;
+                                margin-left: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+            .accountRight{
+                padding: 0px 30px;
+                margin: -20px 0px;
+                .infoUserItem{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 20px 0px;
+                    border-bottom: 1px solid gray;
+                }
+            }
+        }
+    }
+}
+
+    
+@media screen and (max-width: 480px){
+    .account{
+        .container{
+            .content{
+                display: grid;
+                grid-template-columns: repeat(1,1fr);
+                .accountRight{
+                    padding: 0px 30px;
+                    margin-top: 10px;
+                    
+                }
+            }
+        }
+    }
+}
