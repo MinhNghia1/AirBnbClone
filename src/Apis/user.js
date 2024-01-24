@@ -42,13 +42,7 @@ export const editAvatar = async (formFile) => {
     const formData = new FormData();
     for (let key in formFile) {
       formData.append(key, formFile[key]);
-      console.log(key, formFile[key]);
     }
-    const hasHinhAnh = formData.has("formFile");
-
-    // In kết quả kiểm tra
-    console.log("Has formFile:", hasHinhAnh);
-
     const resp = await baseAPI.post("/users/upload-avatar", formData);
     return resp.data.content;
   } catch (error) {
