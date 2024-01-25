@@ -5,6 +5,7 @@ import SignIn from "./Module/Auth/SignIn";
 import SignUp from "./Module/Auth/SignUp/SignUp";
 import Account from "./Module/Personal-info/Page/Account";
 import RoomByLocation from "./Module/RoomByLocation/pages";
+import PrivateRoute from "./Routers/PrivateRoute";
 
 function App() {
   return (
@@ -14,7 +15,10 @@ function App() {
           <Route index element={<Home />}></Route>
           <Route path="/RoomByCity/:IdRoom" element={<RoomByLocation />}></Route>
         </Route>
-        <Route path="/personal-info/:IdUser" element={<Account />}></Route>
+        <Route path="/personal-info/:IdUser" element={<PrivateRoute />}>
+          <Route index element={<Account />}></Route>
+        </Route>
+
         <Route path="/SiginUser" element={<SignIn />}></Route>
         <Route path="/SigupUser" element={<SignUp />}></Route>
       </Routes>

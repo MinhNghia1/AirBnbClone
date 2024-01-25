@@ -1,0 +1,124 @@
+.infoRoom {
+    margin-top: 100px;
+    margin-bottom: 100px;
+
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin: auto;
+        width: 95%;
+        grid-template-rows: auto;
+        .infoRoomLeft {
+            width: 99%;        
+
+            .titlePage {
+                font-size: 20px;
+                font-weight: bold;
+                padding: 15px 0px;
+            }
+
+            .cardItem {
+                position: relative;
+                padding: 15px 0px;
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                border-top: 1px solid gray;
+
+                .cardTop {
+                    margin-right: 20px;
+                    max-width: 250px;
+                    width: 100%;
+                    height: 200px;
+
+                    .roomSwiper {
+                        height: 100%;
+                        background-position: center;
+                        background-size: cover;
+                        border-radius: 10px;
+
+                        img {
+                            max-width: 100%;
+                            height: 100%;
+                            object-fit: cover
+                        }
+                    }
+                }
+
+                .cardBody {
+                    width: 90%;
+                    overflow: hidden;
+                    padding-right: 10px;
+                    position: relative;
+
+                    .titleCard {
+                        h3 {
+                            margin-top: 0px;
+                            width: 100%;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+                    }
+
+                    .infoCard {
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        -webkit-line-clamp: 2;
+                        /* Số lượng dòng hiển thị */
+                        text-overflow: ellipsis;
+                        max-height: 55px;
+                        border-top: 1px solid gray;
+                        padding-top: 20px;
+
+                    }
+
+                    .price {
+                        position: absolute;
+                        bottom: 0;
+                        right: 0;
+                        color: var(--primary);
+                        font-size: 16px;
+                        font-weight: 600;
+                    }
+                }
+
+                .logoHeart {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    background: none;
+                    border: none;
+                    padding: 10px;
+
+                    svg {
+                        display: block;
+                        stroke: rgb(255, 255, 255);
+                        overflow: hidden;
+                        fill: rgba(0, 0, 0, 0.5);
+                        height: 30px;
+                        width: 30px;
+                        transition: fill 0.3s ease;
+                        /* Hiệu ứng chuyển đổi màu sắc trong 0.3 giây */
+                    }
+
+                    cursor: pointer;
+
+                    &:hover {
+                        svg {
+                            fill: var(--primary);
+                        }
+                    }
+                }
+
+            }
+        }
+        .InfoMap{
+           width: 100%;
+            .map{
+                position: sticky;
+                top: 110px; 
+            }
+        }
+    }
+}

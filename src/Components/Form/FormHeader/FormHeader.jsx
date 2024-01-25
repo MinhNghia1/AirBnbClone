@@ -45,7 +45,7 @@ export default function FormHeader() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        width: { xs: "90%", sm: "90%", md: "70%" },
+        width: { xs: "90%", sm: "90%", md: "55%" },
         border: "1px solid gray",
         height: "46px",
       }}

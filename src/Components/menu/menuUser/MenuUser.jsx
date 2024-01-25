@@ -13,7 +13,7 @@ import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import { FaPlane } from "react-icons/fa";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { getUserId } from "../../../Apis/user";
 export default function MenuUser() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -50,7 +50,7 @@ export default function MenuUser() {
     }).then((result) => {
       if (result.isConfirmed) {
         localStorage.removeItem("currenuser");
-        navigate(`/`);
+        <Navigate />;
         window.location.reload();
       }
     });
