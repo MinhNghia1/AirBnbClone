@@ -9,7 +9,7 @@ export const signUpUser = async (user) => {
     if (error?.response) {
       toast.error(error?.response?.data?.content);
     } else {
-      toast.error(error.message);
+      throw error.message;
     }
   }
 };
@@ -21,7 +21,7 @@ export const signInUser = async (user) => {
     if (error?.response) {
       toast.error(error?.response?.data?.content);
     } else {
-      toast.error(error.message);
+      throw error.message;
     }
   }
 };
@@ -33,7 +33,7 @@ export const getUserId = async (id) => {
     if (error?.response) {
       toast.error(error?.response?.data?.content);
     } else {
-      toast.error(error.message);
+      throw error.message;
     }
   }
 };
@@ -49,7 +49,7 @@ export const editAvatar = async (formFile) => {
     if (error?.response) {
       toast.error(error?.response?.data?.content);
     } else {
-      toast.error(error.message);
+      throw error.message;
     }
   }
 };

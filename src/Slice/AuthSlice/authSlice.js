@@ -5,8 +5,8 @@ import "sweetalert2/dist/sweetalert2.css";
 export const signin = createAsyncThunk("auth/sigin", async (value) => {
   try {
     const data = await signInUser(value);
-    localStorage.setItem("currenuser", JSON.stringify(data));
     if (data) {
+      localStorage.setItem("currenuser", JSON.stringify(data));
       swal.fire("Đăng Nhập Thành Công");
     } else {
       swal.fire("Đăng Nhập Thất Bại");
