@@ -1,0 +1,67 @@
+.container {
+  margin: 1.25rem auto 0 auto;
+}
+.container .grid-item {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+}
+@media (min-width: 640px) {
+  .container .grid-item {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1024px) {
+  .container .grid-item {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+.container .grid-item .roomItem {
+  text-decoration: none;
+  color: black;
+  box-shadow: 0px 1px 10px 3px rgba(155, 146, 146, 0.54);
+  -webkit-box-shadow: 0px 1px 10px 3px rgba(155, 146, 146, 0.54);
+  -moz-box-shadow: 0px 1px 10px 3px rgba(155, 146, 146, 0.54);
+}
+.container .grid-item .roomItem .topItem {
+  padding: 0px 20px;
+  position: relative;
+  width: 100%;
+}
+.container .grid-item .roomItem .topItem img {
+  width: 100%;
+  border-radius: 12px;
+  height: 100%;
+  overflow: hidden;
+}
+.container .grid-item .roomItem .topItem .btn-heart {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 100;
+  border: none;
+  background-color: transparent;
+}
+.container .grid-item .btItem .container-bt .title {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+.container .grid-item .btItem .container-bt .title .nameTitle {
+  color: #FF385C;
+  display: inline-block;
+}
+.container .grid-item .btItem .container-bt .title span {
+  color: #FF385C;
+}
+.container .grid-item .btItem .container-bt .text-item {
+  color: #718096;
+}
+.container .grid-item .btItem .container-bt .price {
+  margin-top: 0.25rem;
+}
+.container .grid-item .btItem .container-bt .price .number-price {
+  font-weight: bold;
+}

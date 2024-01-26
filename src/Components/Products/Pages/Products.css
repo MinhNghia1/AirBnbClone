@@ -21,26 +21,30 @@
 .container .grid-item .roomItem {
   text-decoration: none;
   color: black;
-  box-shadow: 0px 1px 10px 3px rgba(221, 218, 218, 0.54);
-  -webkit-box-shadow: 0px 1px 10px 3px rgba(221, 218, 218, 0.54);
-  -moz-box-shadow: 0px 1px 10px 3px rgba(221, 218, 218, 0.54);
-  border: 0.5px solid rgb(227, 226, 226);
   border-radius: 12px;
 }
 .container .grid-item .roomItem .topItem {
   position: relative;
   background-color: transparent;
+  border-radius: 12px;
 }
 .container .grid-item .roomItem .topItem .roomSwiper {
-  border-top-right-radius: 12px;
-  border-top-left-radius: 12px;
+  border-radius: 12px;
 }
-.container .grid-item .roomItem .topItem img {
-  width: -moz-fit-content;
-  width: fit-content;
-  border-top-right-radius: 12px;
-  border-top-left-radius: 12px;
+.container .grid-item .roomItem .topItem .roomSwiper img {
+  border-radius: 12px;
+  height: 210px;
   overflow: hidden;
+}
+@media (min-width: 376px) and (max-width: 1200px) {
+  .container .grid-item .roomItem .topItem .roomSwiper img {
+    height: 150px;
+  }
+}
+@media (max-width: 375px) {
+  .container .grid-item .roomItem .topItem .roomSwiper img {
+    height: 50px;
+  }
 }
 .container .grid-item .roomItem .topItem .btn-heart {
   position: absolute;
@@ -50,28 +54,25 @@
   border: none;
   background-color: transparent;
 }
-.container .grid-item .btItem {
-  padding: 0 20px;
-}
-.container .grid-item .btItem .container-bt .title {
+.container .grid-item .roomItem .btItem .container-bt .title {
   display: flex;
   justify-content: space-between;
   margin-top: 0.5rem;
 }
-.container .grid-item .btItem .container-bt .title .nameItem {
+.container .grid-item .roomItem .btItem .container-bt .title .nameItem {
   color: #FF385C;
   display: inline-block;
   font-weight: 900;
 }
-.container .grid-item .btItem .container-bt .title span {
+.container .grid-item .roomItem .btItem .container-bt .title span {
   color: #FF385C;
 }
-.container .grid-item .btItem .container-bt .text-item {
+.container .grid-item .roomItem .btItem .container-bt .text-item {
   color: #718096;
 }
-.container .grid-item .btItem .container-bt .price {
+.container .grid-item .roomItem .btItem .container-bt .price {
   margin-top: 0.25rem;
 }
-.container .grid-item .btItem .container-bt .price .number-price {
+.container .grid-item .roomItem .btItem .container-bt .price .number-price {
   font-weight: bold;
 }
