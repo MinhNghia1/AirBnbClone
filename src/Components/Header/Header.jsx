@@ -17,15 +17,14 @@ export default function Header() {
   });
   useEffect(() => {
     const handleClickOutside = (event) => {
-      // Kiểm tra xem sự kiện click có ở ngoài thành phần không
       const headerElement = document.querySelector(`.${styled.header}`);
       if (headerElement && !headerElement.contains(event.target)) {
         setIsShow(true);
       }
     };
-    // Gắn trình nghe sự kiện khi thành phần được mount
+
     document.addEventListener("click", handleClickOutside);
-    // Dọn dẹp trình nghe sự kiện khi thành phần unmount để tránh rò rỉ bộ nhớ
+
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };

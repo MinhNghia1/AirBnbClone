@@ -3,46 +3,51 @@ import styled from "./InfoRoom.module.scss";
 import { getRoomByLocation } from "../../../../Apis/room";
 import LoadingPage from "../../../../Components/LoadingPage";
 import "swiper/css";
-import "swiper/css/navigation";
+import "swiper/package.json";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import "./InfoRoom.scss";
 
 export default function InfoRoom({ IdLocation }) {
   const [rooms, setRooms] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
+    setLoading(true);
     handleGetRoomByLocation(IdLocation);
-  }, []);
+  }, [IdLocation]);
+
   const handleGetRoomByLocation = async (id) => {
     try {
-      setIsLoading(true);
       const resp = await getRoomByLocation(id);
       setRooms(resp);
     } catch (error) {
       console.error(error);
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   };
+  if (loading) {
+    return <LoadingPage />;
+  }
   if (!rooms) {
     return;
   }
-  console.log(rooms);
   return (
     <div className={styled.infoRoom}>
-      {isLoading && <LoadingPage />}
       <div className={styled.container}>
         <div className={styled.infoRoomLeft}>
           <div className={styled.titlePage}>Chỗ ở hiện tại của bạn đã chọn</div>
-          {rooms.map((room) => (
-            <div className={styled.cardItem}>
+          {rooms.map((room, index) => (
+            <div key={index} className={styled.cardItem}>
               <div className={styled.cardTop}>
                 <Swiper
+                  modules={[Pagination, Navigation]}
                   className={styled.roomSwiper}
                   spaceBetween={0}
                   slidesPerView={1}
-                  navigation={{ prevEl: ".swiper-button-prev", nextEl: ".swiper-button-next" }}
-                  Pagination={{ clickable: true }}
+                  navigation={{ nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }}
+                  pagination={{ clickable: true }}
                 >
                   <SwiperSlide>
                     <img src={room.hinhAnh} alt="Room Slide" className="w-full" />
@@ -53,6 +58,8 @@ export default function InfoRoom({ IdLocation }) {
                   <SwiperSlide>
                     <img src={room.hinhAnh} alt="Room Slide" className="w-full" />
                   </SwiperSlide>
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
                 </Swiper>
               </div>
               <div className={styled.cardBody}>
@@ -95,8 +102,6 @@ export default function InfoRoom({ IdLocation }) {
           <div className={styled.map}>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15745517.975649437!2d95.18945211775045!3d15.531664308744194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31157a4d736a1e5f%3A0xb03bb0c9e2fe62be!2sVietnam!5e0!3m2!1sfr!2s!4v1706190815828!5m2!1sfr!2s"
-              width="700"
-              height="500"
               allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"

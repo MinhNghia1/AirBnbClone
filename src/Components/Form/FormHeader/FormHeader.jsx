@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 export default function FormHeader() {
   const navigate = useNavigate();
+  const [locationId, setLocationId] = useState(null);
   const { register, handleSubmit } = useForm({
     defaultValues: {
       maViTri: "",
@@ -25,14 +26,13 @@ export default function FormHeader() {
     getListLocation();
   }, []);
 
-  const handleOptionClick = (event, value) => {
-    // Ngăn chặn sự kiện khi chọn một option
+  const handleOptionClick = (event) => {
     event.stopPropagation();
   };
   const handleRoomByLocation = (value) => {
     const viTri = locations.find((item) => value.maViTri === item.tenViTri);
-
-    if (viTri.id) {
+    setLocationId(viTri.id);
+    if (locationId) {
       navigate(`/RoomByCity/${viTri.id}`);
     }
   };
