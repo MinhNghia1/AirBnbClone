@@ -5,15 +5,17 @@ import Button from "@mui/material/Button";
 import { useSelector, useDispatch } from "react-redux";
 import { signin } from "../../../Slice/AuthSlice/authSlice";
 import { useForm } from "react-hook-form";
-import { Navigate } from "react-router-dom";
+import { Navigate, useSearchParams } from "react-router-dom";
 
 export default function () {
   const dispatch = useDispatch();
+  const [searchParam] = useSearchParams();
   const { register, handleSubmit } = useForm({
     defaultValues: {
       email: "",
       password: "",
     },
+    mode: "onSubmit",
   });
   const handleSignin = (value) => {
     dispatch(signin(value));
@@ -22,7 +24,8 @@ export default function () {
     return state.auth;
   });
   if (currentUser) {
-    return <Navigate to="/" replace />;
+    const url = searchParam.get("from") || "/";
+    return <Navigate to={url} replace />;
   }
   return (
     <Box

@@ -63,6 +63,10 @@ export default function MenuUser() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const handleInFoBookingRoom = () => {
+    setAnchorEl(null);
+    navigate(`/BookingRoom/${currentUser.user.id}`);
+  };
 
   return (
     <React.Fragment>
@@ -127,7 +131,7 @@ export default function MenuUser() {
           <Avatar />
           Thông Tin Cá Nhân
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleInFoBookingRoom}>
           <FaPlane
             fontSize={25}
             color="#FFFFFF"
