@@ -1,0 +1,29 @@
+.headerInfo {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: white;
+}
+.headerInfo .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 85%;
+  margin: auto;
+  padding: 10px 0px;
+}
+.headerInfo .logoBnb {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.headerInfo .logoBnb span {
+  color: var(--primary);
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 5px;
+}
+.headerInfo .InfoUser {
+  display: flex;
+  align-items: center;
+}

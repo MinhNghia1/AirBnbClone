@@ -1,0 +1,46 @@
+.container {
+  margin: 10rem 5rem 15rem 5rem;
+}
+.container .grid-item {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 3.5rem;
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+}
+@media (min-width: 640px) {
+  .container .grid-item {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1024px) {
+  .container .grid-item {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+.container .grid-item .roomItem {
+  text-decoration: none;
+  color: black;
+  border-radius: 12px;
+}
+.container .grid-item .roomItem .topItem {
+  width: 100%;
+  position: relative;
+  background-color: transparent;
+}
+.container .grid-item .roomItem .topItem .roomSwiper {
+  border-radius: 12px;
+}
+.container .grid-item .roomItem .topItem img {
+  width: 200%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.container .grid-item .roomItem .topItem .btn-heart {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 100;
+  border: none;
+  background-color: transparent;
+}

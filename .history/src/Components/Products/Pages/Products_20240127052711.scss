@@ -1,0 +1,94 @@
+.container {
+    margin: 10rem 5rem 15rem 5rem;
+
+    .grid-item {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+
+        @media (min-width: 640px) {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        @media (min-width: 1024px) {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        gap: 3.5rem;
+        margin-left: 2.5rem;
+        margin-right: 2.5rem;
+
+        .roomItem {
+
+            text-decoration: none;
+            color: black;
+            border-radius: 12px;
+
+            .topItem {
+                position: relative;
+                background-color: transparent;
+                border-radius: 12px;
+
+                .roomSwiper {
+                    border-radius: 12px;
+
+                    img {
+                        border-radius: 12px;
+                        height: 200px;
+                        overflow: hidden;
+
+                        @media (min-width: 640px) {
+                            height: 150px;
+                        }
+                        @media (min-width: 356px) {
+                            height: 100px;
+
+                        }
+                    }
+                }
+
+                .btn-heart {
+                    position: absolute;
+                    top: 0.75rem;
+                    right: 0.75rem;
+                    z-index: 100;
+                    border: none;
+                    background-color: transparent;
+                }
+            }
+
+            .btItem {
+                .container-bt {
+                    .title {
+                        display: flex;
+                        justify-content: space-between;
+                        margin-top: 0.5rem;
+
+                        .nameItem {
+                            color: #FF385C;
+                            display: inline-block;
+                            font-weight: 900;
+                        }
+
+                        span {
+                            color: #FF385C;
+
+                            i {}
+                        }
+                    }
+
+                    .text-item {
+                        color: #718096;
+                    }
+
+                    .price {
+                        margin-top: 0.25rem;
+
+                        .number-price {
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
