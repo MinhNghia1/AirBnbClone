@@ -60,11 +60,13 @@
   margin-top: 0.5rem;
 }
 .container .grid-item .roomItem .btItem .container-bt .title .nameItem {
+  width: 90%;
   color: #FF385C;
   display: inline-block;
   font-weight: 900;
 }
 .container .grid-item .roomItem .btItem .container-bt .title span {
+  width: 10%;
   color: #FF385C;
 }
 .container .grid-item .roomItem .btItem .container-bt .text-item {

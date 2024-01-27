@@ -1,0 +1,78 @@
+.container {
+  margin: 10rem 5rem 15rem 5rem;
+}
+.container .grid-item {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 3.5rem;
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+}
+@media (min-width: 640px) {
+  .container .grid-item {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1024px) {
+  .container .grid-item {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+.container .grid-item .roomItem {
+  text-decoration: none;
+  color: black;
+  border-radius: 12px;
+}
+.container .grid-item .roomItem .topItem {
+  position: relative;
+  background-color: transparent;
+  border-radius: 12px;
+}
+.container .grid-item .roomItem .topItem .roomSwiper {
+  border-radius: 12px;
+}
+.container .grid-item .roomItem .topItem .roomSwiper img {
+  border-radius: 12px;
+  height: 200px;
+  overflow: hidden;
+}
+@media (min-width: 640px) {
+  .container .grid-item .roomItem .topItem .roomSwiper img {
+    height: 150px;
+  }
+}
+@media (min-width: 1024px) {
+  .container .grid-item .roomItem .topItem .roomSwiper img {
+    height: 100px;
+  }
+}
+.container .grid-item .roomItem .topItem .btn-heart {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 100;
+  border: none;
+  background-color: transparent;
+}
+.container .grid-item .roomItem .btItem .container-bt .title {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+.container .grid-item .roomItem .btItem .container-bt .title .nameItem {
+  color: #FF385C;
+  display: inline-block;
+  font-weight: 900;
+}
+.container .grid-item .roomItem .btItem .container-bt .title span {
+  color: #FF385C;
+}
+.container .grid-item .roomItem .btItem .container-bt .text-item {
+  color: #718096;
+}
+.container .grid-item .roomItem .btItem .container-bt .price {
+  margin-top: 0.25rem;
+}
+.container .grid-item .roomItem .btItem .container-bt .price .number-price {
+  font-weight: bold;
+}
