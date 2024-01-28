@@ -9,11 +9,11 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 export default function FormHeader() {
   const navigate = useNavigate();
-  const [locationId, setLocationId] = useState(null);
   const { register, handleSubmit } = useForm({
     defaultValues: {
       maViTri: "",
     },
+    mode: "onSubmit",
   });
   const [locations, setLocation] = useState([]);
   const getListLocation = async () => {
@@ -31,10 +31,7 @@ export default function FormHeader() {
   };
   const handleRoomByLocation = (value) => {
     const viTri = locations.find((item) => value.maViTri === item.tenViTri);
-    setLocationId(viTri.id);
-    if (locationId) {
-      navigate(`/RoomByCity/${viTri.id}`);
-    }
+    navigate(`/RoomByCity/${viTri.id}`);
   };
   return (
     <Box

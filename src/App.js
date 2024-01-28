@@ -9,6 +9,9 @@ import PrivateRoute from "./Routers/PrivateRouteInfoUser/PrivateRoute";
 import PrivateRouteTicket from "./Routers/PrivateRouteTicket/PrivateRouteTicket";
 import BookingRoom from "./Module/BookingRoom/Pages/BookingRoom";
 import RoomDetail from "./Module/RoomDetail/RoomDetail";
+import PrivateRouteAdmin from "./Routers/PrivateRouteAdmin/PrivateRouteAdmin";
+import MainLayOutAdmin from "./Components/MainLayOutAdmin/MainLayOutAdmin";
+import AdminUser from "./Module/Admin/AdminUser/pages/AdminUser";
 
 function App() {
   return (
@@ -27,9 +30,16 @@ function App() {
         <Route path="/personal-info/:IdUser" element={<PrivateRoute />}>
           <Route index element={<Account />}></Route>
         </Route>
-
         <Route path="/SiginUser" element={<SignIn />}></Route>
         <Route path="/SigupUser" element={<SignUp />}></Route>
+        <Route element={<MainLayOutAdmin />}>
+          <Route path="/admin/ManageUser" element={<PrivateRouteAdmin />}>
+            <Route index element={<AdminUser />}></Route>
+          </Route>
+          <Route path="/admin/ManageLocation" element={<PrivateRouteAdmin />}>
+            <Route path="/admin/ManageLocation"></Route>
+          </Route>
+        </Route>
         <Route path="*" element={<h1>not Found</h1>}></Route>
       </Routes>
     </BrowserRouter>

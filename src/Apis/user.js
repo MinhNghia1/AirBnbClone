@@ -27,6 +27,7 @@ export const signInUser = async (user) => {
 };
 export const getUserId = async (id) => {
   try {
+    console.log(id);
     const resp = await baseAPI.get(`/users/${id}`);
     return resp.data.content;
   } catch (error) {
