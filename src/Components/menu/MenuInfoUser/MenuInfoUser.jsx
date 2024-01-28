@@ -55,13 +55,21 @@ export default function MenuInfoUser({ obj }) {
       }
     });
   };
+  const handleManageUser = () => {
+    setAnchorEl(null);
 
+    navigate("/admin/ManageUser");
+  };
   const handleInfoUser = () => {
     setAnchorEl(null);
     navigate(`/personal-info/${currentUser.user.id}`);
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  const handleInFoBookingRoom = () => {
+    setAnchorEl(null);
+    navigate(`/BookingRoom/${currentUser.user.id}`);
   };
 
   return (
@@ -127,7 +135,7 @@ export default function MenuInfoUser({ obj }) {
           <Avatar />
           Thông Tin Cá Nhân
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleInFoBookingRoom}>
           <FaPlane
             fontSize={25}
             color="#FFFFFF"
@@ -143,7 +151,7 @@ export default function MenuInfoUser({ obj }) {
         </MenuItem>
         <Divider />
         {currentUser.user.role === "ADMIN" && (
-          <MenuItem onClick={handleClose}>
+          <MenuItem onClick={handleManageUser}>
             <ListItemIcon>
               <ManageAccountsIcon />
             </ListItemIcon>

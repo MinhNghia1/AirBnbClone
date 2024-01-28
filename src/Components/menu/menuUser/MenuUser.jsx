@@ -13,7 +13,7 @@ import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import { FaPlane } from "react-icons/fa";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
-import { useNavigate, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getUserId } from "../../../Apis/user";
 export default function MenuUser() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -50,12 +50,16 @@ export default function MenuUser() {
     }).then((result) => {
       if (result.isConfirmed) {
         localStorage.removeItem("currenuser");
-        <Navigate />;
+        navigate("/");
         window.location.reload();
       }
     });
   };
+  const handleManageUser = () => {
+    setAnchorEl(null);
 
+    navigate("/admin/ManageUser");
+  };
   const handleInfoUser = () => {
     setAnchorEl(null);
     navigate(`/personal-info/${currentUser.user.id}`);
@@ -147,7 +151,7 @@ export default function MenuUser() {
         </MenuItem>
         <Divider />
         {currentUser.user.role === "ADMIN" && (
-          <MenuItem onClick={handleClose}>
+          <MenuItem onClick={handleManageUser}>
             <ListItemIcon>
               <ManageAccountsIcon />
             </ListItemIcon>
