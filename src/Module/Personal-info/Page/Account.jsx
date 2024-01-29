@@ -9,9 +9,9 @@ export default function Account() {
   };
 
   return (
-    <div>
+    <>
       <HeaderInfoUser obj={avatar?.avatar} />
       <PersonalInfo getInfo={handleGetNewAvatar} />
-    </div>
+    </>
   );
 }

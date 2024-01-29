@@ -1,9 +1,8 @@
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import styled from "./ModalImage.module.scss";
-import { editAvatar } from "../../../../Apis/user";
+import { editAvatar } from "../../../../../Apis/user";
 import { useForm } from "react-hook-form";
-
 import Swal from "sweetalert2";
 import { useState } from "react";
 const style = {

@@ -3,11 +3,13 @@ import { useParams } from "react-router-dom";
 import { getUserId } from "../../../../Apis/user";
 import styled from "./PersonalInfo.module.scss";
 import { FaCheck } from "react-icons/fa";
-import ModalEditImage from "../modalEditImage/ModalEditImage";
+import ModalEditImage from "../Modal/modalEditImage/ModalEditImage";
+import ModalUpdateInfo from "../Modal/ModalUpdateInfo/ModalUpdateInfo";
 
 export default function PersonalInfo({ getInfo }) {
   const [inforUser, setInforUser] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpenUpDate, setIsOpenUpDate] = useState(false);
   const param = useParams();
   useEffect(() => {
     getUser();
@@ -29,16 +31,33 @@ export default function PersonalInfo({ getInfo }) {
   const handleClose = (value) => {
     setIsOpen(value);
   };
+  const handleOnOpenUpdate = () => {
+    setIsOpenUpDate(true);
+  };
+
+  const handleCloseUpdate = (value) => {
+    setIsOpenUpDate(value);
+  };
   const handleUpdateAvatar = (value) => {
     if (value) {
       getUser();
       getInfo(value);
     }
   };
-  console.log(inforUser);
+  const handleUpdateInfoUser = (value) => {
+    if (value) {
+      getUser();
+    }
+  };
   return (
     <div className={styled.account}>
       <ModalEditImage isOpen={isOpen} onclose={handleClose} onUpdate={handleUpdateAvatar} />
+      <ModalUpdateInfo
+        onUpdateInfo={handleUpdateInfoUser}
+        currentUser={inforUser}
+        onOpenUpdate={isOpenUpDate}
+        onCloseUpdate={handleCloseUpdate}
+      />
       <div className={styled.container}>
         <div className={styled.content}>
           <div className={styled.accountLeft}>
@@ -70,27 +89,31 @@ export default function PersonalInfo({ getInfo }) {
             </div>
           </div>
           <div className={styled.accountRight}>
+            <div className={styled.changeInfoUser}>
+              <button onClick={handleOnOpenUpdate}>Thay Đổi Thông Tin</button>
+            </div>
             <div className={styled.infoUserItem}>
-              <div>Tên tài khoản: </div>
+              <div style={{ fontWeight: "600", fontSize: "16px" }}>Tên tài khoản: </div>
               <div>{inforUser.name}</div>
             </div>
             <div className={styled.infoUserItem}>
-              <div>Giới tính: </div>
+              <div style={{ fontWeight: "600", fontSize: "16px" }}>Giới tính: </div>
               <div>{inforUser.gender === true ? "Nam" : "Nữ"}</div>
             </div>
             <div className={styled.infoUserItem}>
-              <div>Ngày sinh: </div>
+              <div style={{ fontWeight: "600", fontSize: "16px" }}>Ngày sinh: </div>
               <div>{inforUser.birthday}</div>
             </div>
             <div className={styled.infoUserItem}>
-              <div>Địa chỉ email: </div>
+              <div style={{ fontWeight: "600", fontSize: "16px" }}>Địa chỉ email: </div>
               <div>{inforUser.email}</div>
             </div>
             <div className={styled.infoUserItem}>
-              <div>Số điện thoại: </div>
+              <div style={{ fontWeight: "600", fontSize: "16px" }}>Số điện thoại: </div>
               <div>{inforUser.phone}</div>
             </div>
           </div>
+          s
         </div>
       </div>
     </div>
