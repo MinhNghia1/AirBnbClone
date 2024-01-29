@@ -85,13 +85,37 @@
             .accountRight{
                 padding: 0px 30px;
                 margin: -20px 0px;
+                
+                .changeInfoUser{ 
+                    padding: 20px 0px;
+                    border-bottom: 1px solid gray;
+                    display: flex;
+                    justify-content: flex-end;
+                    button{
+                        padding: 10px 20px;
+                        border: none;
+                        background-color: var(--primary);
+                        color: white;
+                        border-radius: 10px;
+                        transition: all 0.3s;
+                        cursor: pointer;
+                        &:hover{
+                            background-color: rgb(250, 26, 63);
+                        }
+                    }
+                }
                 .infoUserItem{
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
                     padding: 20px 0px;
                     border-bottom: 1px solid gray;
+                    .btnChangeInfo{
+                        text-decoration: underline;
+                        cursor: pointer;
+                    }
                 }
+                
             }
         }
     }
@@ -107,7 +131,6 @@
                 .accountRight{
                     padding: 0px 30px;
                     margin-top: 10px;
-                    
                 }
             }
         }

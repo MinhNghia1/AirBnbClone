@@ -25,9 +25,34 @@ export const signInUser = async (user) => {
     }
   }
 };
+export const getListUser = async () => {
+  try {
+    const reps = await baseAPI.get("/users");
+    return reps.data.content;
+  } catch (error) {
+    if (error?.response) {
+      toast.error(error?.response?.data?.content);
+    } else {
+      throw error.message;
+    }
+  }
+};
+export const getListUserPhanTrang = async (numberPage) => {
+  try {
+    const reps = await baseAPI.get("/users/phan-trang-tim-kiem", {
+      params: { pageIndex: numberPage, pageSize: 8 },
+    });
+    return reps.data.content;
+  } catch (error) {
+    if (error?.response) {
+      toast.error(error?.response?.data?.content);
+    } else {
+      throw error.message;
+    }
+  }
+};
 export const getUserId = async (id) => {
   try {
-    console.log(id);
     const resp = await baseAPI.get(`/users/${id}`);
     return resp.data.content;
   } catch (error) {
@@ -45,6 +70,19 @@ export const editAvatar = async (formFile) => {
       formData.append(key, formFile[key]);
     }
     const resp = await baseAPI.post("/users/upload-avatar", formData);
+    return resp.data.content;
+  } catch (error) {
+    if (error?.response) {
+      toast.error(error?.response?.data?.content);
+    } else {
+      throw error.message;
+    }
+  }
+};
+
+export const updateUser = async (id, user) => {
+  try {
+    const resp = await baseAPI.put(`/users/${id}`, user);
     return resp.data.content;
   } catch (error) {
     if (error?.response) {
