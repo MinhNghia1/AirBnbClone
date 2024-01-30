@@ -8,10 +8,11 @@ import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "./InfoRoom.scss";
-
+import { useNavigate } from "react-router-dom";
 export default function InfoRoom({ IdLocation }) {
   const [rooms, setRooms] = useState(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
   useEffect(() => {
     setLoading(true);
     handleGetRoomByLocation(IdLocation);
@@ -27,6 +28,9 @@ export default function InfoRoom({ IdLocation }) {
       setLoading(false);
     }
   };
+  const handleGoToDetail = (id) => {
+    return navigate(`/roomDetail/${id}`);
+  };
   if (loading) {
     return <LoadingPage />;
   }
@@ -39,7 +43,7 @@ export default function InfoRoom({ IdLocation }) {
         <div className={styled.infoRoomLeft}>
           <div className={styled.titlePage}>Chỗ ở hiện tại của bạn đã chọn</div>
           {rooms.map((room, index) => (
-            <div key={index} className={styled.cardItem}>
+            <div onClick={() => handleGoToDetail(room.id)} key={index} className={styled.cardItem}>
               <div className={styled.cardTop}>
                 <Swiper
                   modules={[Pagination, Navigation]}

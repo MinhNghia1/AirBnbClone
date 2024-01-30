@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styled from "./ManageUser.module.scss";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -8,15 +8,50 @@ import TableRow from "@mui/material/TableRow";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import dayjs from "dayjs";
-import { getListUser, getListUserPhanTrang } from "../../../../../Apis/user";
+import { CiSearch } from "react-icons/ci";
+import { getListUser, getListUserPhanTrang, findUser, deleteUser } from "../../../../../Apis/user";
+import ModalAdmin from "../ModalAdmin/ModalAdmin";
+import { IoReload } from "react-icons/io5";
+import Button from "@mui/material/Button";
+import swal from "sweetalert2";
 export default function ManagaeUser() {
   const [numberPage, setNumberPage] = useState(1);
   const [totalPages, setTotalPages] = useState(null);
   const [infoUSer, setInfoUser] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [debounceSearchTerm, setDebounceSearchTerm] = useState(searchTerm);
+  const [isOpenModal, setIsopenModal] = useState(false);
+  const [userEdit, setUserEdit] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
+  const timer = useRef();
+  const handleSearch = (evt) => {
+    setSearchTerm(evt.target.value);
+
+    clearTimeout(timer.current);
+    timer.current = setTimeout(() => {
+      setDebounceSearchTerm(evt.target.value);
+    }, [500]);
+  };
+  useEffect(() => {
+    if (debounceSearchTerm) {
+      handFindUser?.(debounceSearchTerm);
+    }
+  }, [debounceSearchTerm]);
+  const handFindUser = async (keyWord) => {
+    try {
+      const resp = await findUser(keyWord);
+      if (resp) {
+        setInfoUser(resp);
+      } else {
+        handleGetListUserPage(numberPage);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
   useEffect(() => {
     getList();
     handleGetListUserPage(numberPage);
-    console.log(numberPage);
   }, [numberPage]);
   const getList = async () => {
     try {
@@ -38,8 +73,63 @@ export default function ManagaeUser() {
   const handleChangePage = (event, value) => {
     setNumberPage(value);
   };
+  const handleOpenModal = () => {
+    setIsopenModal(true);
+    setIsEditing(true);
+  };
+  const handleCloseModal = (value) => {
+    setIsopenModal(value);
+  };
+  const handleEdit = (value) => {
+    setIsopenModal(true);
+    setUserEdit(value);
+    setIsEditing(false);
+  };
+  const handleReFresh = () => {
+    getList();
+    handleGetListUserPage(numberPage);
+  };
+  const handleDelte = async (item) => {
+    try {
+      const resp = await deleteUser(item.id);
+      console.log(resp);
+      getList();
+      handleGetListUserPage(numberPage);
+      if (!resp) {
+        swal.fire("Xóa User Thành Công", "", "success");
+      } else {
+        swal.fire("Xóa User Thất Bại", "", "error");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <div className={styled.manageUser}>
+      <ModalAdmin
+        onOpen={isOpenModal}
+        onClose={handleCloseModal}
+        editUser={userEdit}
+        isEditing={isEditing}
+      />
+      <div className={styled.btnAdmin}>
+        <button onClick={handleOpenModal}>Thêm</button>
+      </div>
+      <div className={styled.groupFind}>
+        <div className={styled.manageUserFind}>
+          <input onChange={handleSearch} placeholder="Tìm Kiếm Người Dùng" value={searchTerm} />
+          <div className={styled.manageUserIconFind}>
+            <CiSearch width={50} />
+          </div>
+        </div>
+        <Button
+          onClick={handleReFresh}
+          sx={{ marginLeft: "10px", height: "30px" }}
+          variant="contained"
+        >
+          <IoReload fontSize={20} />
+        </Button>
+      </div>
       <Table sx={{ minWidth: 650, backgroundColor: "gray" }} aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -105,6 +195,14 @@ export default function ManagaeUser() {
               </TableCell>
               <TableCell style={{ fontSize: "14px" }} align="left">
                 {item.role}
+              </TableCell>
+              <TableCell style={{ fontSize: "14px" }} align="left">
+                <button onClick={() => handleEdit(item)} className={styled.btnEdit}>
+                  Sửa
+                </button>
+                <button onClick={() => handleDelte(item)} className={styled.btnDelete}>
+                  Xóa
+                </button>
               </TableCell>
             </TableRow>
           ))}
