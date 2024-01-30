@@ -5,7 +5,7 @@ import styled from "./PersonalInfo.module.scss";
 import { FaCheck } from "react-icons/fa";
 import ModalEditImage from "../Modal/modalEditImage/ModalEditImage";
 import ModalUpdateInfo from "../Modal/ModalUpdateInfo/ModalUpdateInfo";
-
+import dayjs from "dayjs";
 export default function PersonalInfo({ getInfo }) {
   const [inforUser, setInforUser] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -102,7 +102,7 @@ export default function PersonalInfo({ getInfo }) {
             </div>
             <div className={styled.infoUserItem}>
               <div style={{ fontWeight: "600", fontSize: "16px" }}>Ngày sinh: </div>
-              <div>{inforUser.birthday}</div>
+              <div>{dayjs(inforUser.birthday).format("DD/MM/YYYY")}</div>
             </div>
             <div className={styled.infoUserItem}>
               <div style={{ fontWeight: "600", fontSize: "16px" }}>Địa chỉ email: </div>

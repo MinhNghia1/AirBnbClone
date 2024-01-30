@@ -92,3 +92,39 @@ export const updateUser = async (id, user) => {
     }
   }
 };
+export const findUser = async (keyWord) => {
+  try {
+    const resp = await baseAPI.get(`/users/search/${keyWord}`);
+    return resp.data.content;
+  } catch (error) {
+    if (error?.response) {
+      toast.error(error?.response?.data?.content);
+    } else {
+      throw error.message;
+    }
+  }
+};
+export const AddUser = async (user) => {
+  try {
+    const resp = await baseAPI.post(`/users`, user);
+    return resp.data.content;
+  } catch (error) {
+    if (error?.response) {
+      toast.error(error?.response?.data?.content);
+    } else {
+      throw error.message;
+    }
+  }
+};
+export const deleteUser = async (id) => {
+  try {
+    const resp = await baseAPI.delete(`/users`, { params: { id: id } });
+    return resp.data.content;
+  } catch (error) {
+    if (error?.response) {
+      toast.error(error?.response?.data?.content);
+    } else {
+      throw error.message;
+    }
+  }
+};

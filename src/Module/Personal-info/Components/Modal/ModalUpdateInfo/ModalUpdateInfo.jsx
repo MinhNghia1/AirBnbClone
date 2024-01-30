@@ -3,7 +3,7 @@ import styled from "./ModalUpdateInfo.module.scss";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import MenuItem from "@mui/material/MenuItem";
 import InputAdornment from "@mui/material/InputAdornment";
 import { updateUser } from "../../../../../Apis/user";
@@ -51,14 +51,14 @@ export default function ModalUpdateInfo({
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
+    control,
   } = useForm({
     defaultValues: {
       name: `${currentUser.name}`,
       email: `${currentUser.email}`,
       phone: `${currentUser.phone}`,
       birthday: `${currentUser.birthday}`,
-      gender: `${currentUser.gender}`,
+      gender: `${currentUser.gender ? "Nam" : "Nữ"}`,
     },
     resolver: yupResolver(validateField),
   });
@@ -86,7 +86,16 @@ export default function ModalUpdateInfo({
       setIsLoading(false);
     }
   };
-
+  const currencies = [
+    {
+      value: "true",
+      label: "Nam",
+    },
+    {
+      value: "false",
+      label: "Nữ",
+    },
+  ];
   return (
     <div>
       <Modal
@@ -113,6 +122,7 @@ export default function ModalUpdateInfo({
           />
           <TextField {...register("phone")} fullWidth label="fullWidth" id="fullWidth" />
           <TextField
+            defaultValue={currentUser.birthday}
             {...register("birthday")}
             label="Ngày Sinh"
             type="date"
@@ -120,16 +130,28 @@ export default function ModalUpdateInfo({
               startAdornment: <InputAdornment position="start">Ngày Sinh:</InputAdornment>,
             }}
           />
-          <TextField
-            helperText={errors?.gender?.message}
-            error={errors.gender}
-            {...register("gender")}
-            select
-            label="Giới Tính"
-          >
-            <MenuItem value={"true"}>Nam</MenuItem>
-            <MenuItem value={"false"}>Nữ</MenuItem>
-          </TextField>
+
+          <Controller
+            control={control}
+            name="gender"
+            rules={{ required: "Vui lòng không để trống" }}
+            defaultValue={currentUser.gender ? "Nam" : "Nữ"}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                error={!!errors.gender}
+                select
+                label="Giới Tính"
+                helperText={errors?.gender?.message}
+              >
+                {currencies.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </TextField>
+            )}
+          />
           <div className={styled.formButton}>
             <button className={styled.btnUpdate} disabled={isLoading}>
               Update
