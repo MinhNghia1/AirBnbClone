@@ -12,6 +12,7 @@ import RoomDetail from "./Module/RoomDetail/RoomDetail";
 import PrivateRouteAdmin from "./Routers/PrivateRouteAdmin/PrivateRouteAdmin";
 import MainLayOutAdmin from "./Components/MainLayOutAdmin/MainLayOutAdmin";
 import AdminUser from "./Module/Admin/AdminUser/pages/AdminUser";
+import AdminInfo from "./Module/Admin/AdminInfo/pages/AdminInfo";
 
 function App() {
   return (
@@ -38,6 +39,12 @@ function App() {
           </Route>
           <Route path="/admin/ManageLocation" element={<PrivateRouteAdmin />}>
             <Route path="/admin/ManageLocation"></Route>
+          </Route>
+          <Route path="/admin/ManageInfo" element={<PrivateRouteAdmin />}>
+            <Route index element={<AdminInfo />}></Route>
+          </Route>
+          <Route path="/admin/ManageBooking" element={<PrivateRouteAdmin />}>
+            <Route index></Route>
           </Route>
         </Route>
         <Route path="*" element={<h1>not Found</h1>}></Route>
