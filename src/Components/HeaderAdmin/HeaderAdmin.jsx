@@ -18,12 +18,15 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
-
+import { BsInfoSquare } from "react-icons/bs";
 import { IoIosLogOut } from "react-icons/io";
 import { getUserId } from "../../Apis/user";
 import { useSelector } from "react-redux";
-const drawerWidth = 240;
+import { useNavigate } from "react-router-dom";
+import { TbBrandBooking } from "react-icons/tb";
+import Swal from "sweetalert2";
 
+const drawerWidth = 240;
 const openedMixin = (theme) => ({
   width: drawerWidth,
   transition: theme.transitions.create("width", {
@@ -90,14 +93,18 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== "open" 
 );
 
 export default function HeaderAdmin() {
+  const navigate = useNavigate();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [avatar, setAvatar] = React.useState(null);
   const currentUser = useSelector((state) => {
     return state.auth.currentUser;
   });
+  const storedValue = localStorage.getItem("currentUser");
   React.useEffect(() => {
-    getUser(currentUser.user.id);
+    if (storedValue) {
+      getUser(currentUser?.user?.id);
+    }
   }, []);
   const getUser = async (id) => {
     try {
@@ -114,7 +121,22 @@ export default function HeaderAdmin() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
+  const handleLogout = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, SigOut!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem("currenuser");
+        navigate("/");
+        window.location.reload();
+      }
+    });
+  };
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -149,7 +171,7 @@ export default function HeaderAdmin() {
               height={30}
               style={{ borderRadius: "90px" }}
             />
-            <p style={{ fontWeight: "bold", fontSize: "16px" }}>{currentUser.user.name}</p>
+            <p style={{ fontWeight: "bold", fontSize: "16px" }}>{currentUser?.user?.name}</p>
           </div>
 
           <IconButton onClick={handleDrawerClose}>
@@ -158,8 +180,18 @@ export default function HeaderAdmin() {
         </DrawerHeader>
         <Divider />
         <List>
-          {["ManageUser", "ManageLocation"].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
+          {[
+            { name: "ManageUser", path: "/admin/ManageUser" },
+            { name: "ManageLocation", path: "/admin/ManageLocation" },
+            { name: "ManageInfo", path: "/admin/ManageInfo" },
+            { name: "ManageBooking", path: "/admin/ManageBooking" },
+          ].map((text, index) => (
+            <ListItem
+              onClick={() => navigate(`${text.path}`)}
+              key={text}
+              disablePadding
+              sx={{ display: "block" }}
+            >
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -174,9 +206,22 @@ export default function HeaderAdmin() {
                     justifyContent: "center",
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <FaLocationDot />}
+                  {(() => {
+                    switch (index % 4) {
+                      case 0:
+                        return <InboxIcon />;
+                      case 1:
+                        return <FaLocationDot />;
+                      case 2:
+                        return <BsInfoSquare />;
+                      case 3:
+                        return <TbBrandBooking />;
+                      default:
+                        return null;
+                    }
+                  })()}
                 </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText primary={text.name} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
           ))}
@@ -184,7 +229,7 @@ export default function HeaderAdmin() {
         <Divider />
         <List>
           {["Logout"].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
+            <ListItem onClick={handleLogout} key={index} disablePadding sx={{ display: "block" }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,

@@ -69,7 +69,7 @@ const role = [
     label: "ADMIN",
   },
 ];
-export default function ModalAdmin({ onOpen, onClose, editUser, isEditing }) {
+export default function ModalAdmin({ onOpen, onClose, editUser, isEditing, setNulleditUset }) {
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = () => setShowPassword(!showPassword);
@@ -95,6 +95,7 @@ export default function ModalAdmin({ onOpen, onClose, editUser, isEditing }) {
   });
   const handleCancel = () => {
     onClose(false);
+    setNulleditUset(null);
     reset({
       id: 0,
       name: "",

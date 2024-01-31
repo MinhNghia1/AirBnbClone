@@ -111,6 +111,7 @@ export default function ManagaeUser() {
         onClose={handleCloseModal}
         editUser={userEdit}
         isEditing={isEditing}
+        setNulleditUset={() => setUserEdit()}
       />
       <div className={styled.btnAdmin}>
         <button onClick={handleOpenModal}>Thêm</button>
