@@ -48,7 +48,12 @@ export default function InfoRoomBooking({ idUser }) {
   if (loading) {
     return <LoadingPage />;
   }
-
+  if (!bookedRoom) {
+    return;
+  }
+  if (!listRoom) {
+    return;
+  }
   return (
     <div className={styled.infoRoomBooking}>
       <div className={styled.container}>
@@ -77,7 +82,7 @@ export default function InfoRoomBooking({ idUser }) {
                         </p>
                       </div>
                       <div className={styled.cardBookingBodyTitleRight}>
-                        <h2>{infoRoom.giaTien * soNgay}$</h2>
+                        <h2>{infoRoom?.giaTien * soNgay}$</h2>
                         <p>/{soNgay} ngày</p>
                       </div>
                     </div>
@@ -85,14 +90,14 @@ export default function InfoRoomBooking({ idUser }) {
                       <h3>Tiện ích</h3>
                       <div className={styled.cardBookingBodyContentItem}>
                         <div className={styled.itemIcon}>
-                          {infoRoom.wifi ? <FaWifi /> : ""}
-                          {infoRoom.phongNgu ? <MdBedroomParent /> : ""}
-                          {infoRoom.tivi ? <PiTelevisionSimpleBold /> : ""}
-                          {infoRoom.mayGiat ? <GiWashingMachine /> : ""}
-                          {infoRoom.banLa ? <MdOutlineIron /> : ""}
-                          {infoRoom.dieuHoa ? <TbAirConditioning /> : ""}
-                          {infoRoom.hoBoi ? <FaSwimmingPool /> : ""}
-                          {infoRoom.bep ? <TbToolsKitchen3 /> : ""}
+                          {infoRoom?.wifi ? <FaWifi /> : ""}
+                          {infoRoom?.phongNgu ? <MdBedroomParent /> : ""}
+                          {infoRoom?.tivi ? <PiTelevisionSimpleBold /> : ""}
+                          {infoRoom?.mayGiat ? <GiWashingMachine /> : ""}
+                          {infoRoom?.banLa ? <MdOutlineIron /> : ""}
+                          {infoRoom?.dieuHoa ? <TbAirConditioning /> : ""}
+                          {infoRoom?.hoBoi ? <FaSwimmingPool /> : ""}
+                          {infoRoom?.bep ? <TbToolsKitchen3 /> : ""}
                         </div>
                       </div>
                     </div>
