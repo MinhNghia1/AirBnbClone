@@ -1,0 +1,44 @@
+.formControl {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.formSmall {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 15px;
+}
+
+.groupBtn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 10px;
+  gap: 10px;
+}
+.groupBtn .btnSubmitRoom {
+  background-color: var(--primary);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 90px;
+  color: #fff;
+  transition: all 0.7s;
+  cursor: pointer;
+}
+.groupBtn .btnSubmitRoom:hover {
+  background-color: rgb(237, 33, 67);
+}
+.groupBtn .btnCancelRoom {
+  background-color: gray;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 90px;
+  color: #fff;
+  transition: all 0.7s;
+  cursor: pointer;
+}
+.groupBtn .btnCancelRoom:hover {
+  background-color: rgb(128, 121, 121);
+}

@@ -24,6 +24,7 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   border-top: 1px solid gray;
+  cursor: pointer;
 }
 .infoRoom .container .infoRoomLeft .cardItem .cardTop {
   margin-right: 20px;
@@ -36,6 +37,9 @@
   background-position: center;
   background-size: cover;
   border-radius: 10px;
+}
+.infoRoom .container .infoRoomLeft .cardItem .cardTop .roomSwiper .swiper-button-prev {
+  color: var(--primary);
 }
 .infoRoom .container .infoRoomLeft .cardItem .cardTop .roomSwiper img {
   max-width: 100%;
@@ -103,4 +107,123 @@
 .infoRoom .container .InfoMap .map {
   position: sticky;
   top: 110px;
+  width: 100%;
+  overflow: hidden;
+  height: 500px;
+}
+.infoRoom .container .InfoMap .map iframe {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .infoRoom {
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+  .infoRoom .container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+@media screen and (max-width: 480px) {
+  .infoRoom {
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+  .infoRoom .container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .infoRoom .container .infoRoomLeft {
+    width: 100%;
+  }
+  .infoRoom .container .infoRoomLeft .titlePage {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 15px 0px;
+  }
+  .infoRoom .container .infoRoomLeft .cardItem {
+    position: relative;
+    padding: 15px 0px;
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    border-top: 1px solid gray;
+  }
+  .infoRoom .container .infoRoomLeft .cardItem .cardTop {
+    width: 100%;
+    height: 100px;
+  }
+  .infoRoom .container .infoRoomLeft .cardItem .cardTop .roomSwiper {
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px;
+    background-repeat: no-repeat;
+  }
+  .infoRoom .container .infoRoomLeft .cardItem .cardTop .roomSwiper img {
+    max-width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .infoRoom .container .infoRoomLeft .cardItem .cardBody {
+    width: 100%;
+    position: relative;
+    padding-left: 10px;
+    padding-right: 0px;
+    overflow: hidden;
+  }
+  .infoRoom .container .infoRoomLeft .cardItem .cardBody .titleCard h3 {
+    margin: 0px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .infoRoom .container .infoRoomLeft .cardItem .cardBody .infoCard {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    /* Số lượng dòng hiển thị */
+    text-overflow: ellipsis;
+    max-height: 55px;
+    border-top: 1px solid gray;
+    padding-top: 0px;
+  }
+  .infoRoom .container .infoRoomLeft .cardItem .cardBody .price {
+    position: absolute;
+    margin-right: 20px;
+    bottom: 0;
+    right: 0;
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .infoRoom .container .infoRoomLeft .cardItem .logoHeart {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .infoRoom .container .infoRoomLeft .cardItem .logoHeart svg {
+    display: block;
+    stroke: rgb(255, 255, 255);
+    overflow: hidden;
+    fill: rgba(0, 0, 0, 0.5);
+    height: 25px;
+    width: 25px;
+    transition: fill 0.3s ease;
+    /* Hiệu ứng chuyển đổi màu sắc trong 0.3 giây */
+  }
+  .infoRoom .container .infoRoomLeft .cardItem .logoHeart:hover svg {
+    fill: var(--primary);
+  }
 }

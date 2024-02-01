@@ -1,0 +1,187 @@
+.bookingRoom {
+  margin-top: 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 10px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 120px;
+  z-index: 999;
+
+  .bookingContent {
+    padding: 20px;
+    .bookingTitle {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .priceOfNight {
+        font-size: 17px;
+      }
+
+      .averageRating {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 15px;
+
+        .totalFeedback {
+          font-size: 15px;
+          text-decoration: underline;
+          padding-left: 5px;
+          color: rgb(113, 113, 113);
+        }
+      }
+    }
+
+    .bookingDetail {
+      .wrapCalendar {
+        position: absolute;
+        right: 0;
+      }
+
+      .dateRight {
+        width: 50%;
+        border-right: 1px solid #b0b0b0;
+        padding-left: 10px;
+      }
+
+      .dateLeft {
+        width: 50%;
+        padding-left: 15px;
+      }
+
+      .customerItem {
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid #b0b0b0;
+        padding: 5px 10px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border-top-color: transparent;
+
+        .customerRight {
+          padding-left: 5px;
+        }
+
+        .customerLeft {
+          width: 30%;
+          padding-left: 10px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+
+      .btnBookingItem {
+        margin-top: 20px;
+
+        .btnBooking {
+          width: 100%;
+          height: 50px;
+          background-color: #e51d52;
+          color: white;
+          font-size: 19px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: all 0.5s;
+
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+      }
+
+      .priceBeforeBooking {
+        padding-top: 25px;
+        padding-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        box-shadow: rgba(0, 0, 0, 0.08) 0 1px 0;
+      }
+
+      .totalPrice {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+      }
+    }
+  }
+}
+
+.loader {
+  position: relative;
+  width: 2.5em;
+  height: 2.5em;
+  transform: rotate(165deg);
+}
+
+.loader:before,
+.loader:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 0.25em;
+  transform: translate(-50%, -50%);
+}
+
+.loader:before {
+  animation: before8 2s infinite;
+}
+
+.loader:after {
+  animation: after6 2s infinite;
+}
+
+@keyframes before8 {
+  0% {
+    width: 0.5em;
+    box-shadow: 1em -0.5em rgba(225, 20, 98, 0.75), -1em 0.5em rgba(111, 202, 220, 0.75);
+  }
+
+  35% {
+    width: 2.5em;
+    box-shadow: 0 -0.5em rgba(225, 20, 98, 0.75), 0 0.5em rgba(111, 202, 220, 0.75);
+  }
+
+  70% {
+    width: 0.5em;
+    box-shadow: -1em -0.5em rgba(225, 20, 98, 0.75), 1em 0.5em rgba(111, 202, 220, 0.75);
+  }
+
+  100% {
+    box-shadow: 1em -0.5em rgba(225, 20, 98, 0.75), -1em 0.5em rgba(111, 202, 220, 0.75);
+  }
+}
+
+@keyframes after6 {
+  0% {
+    height: 0.5em;
+    box-shadow: 0.5em 1em rgba(61, 184, 143, 0.75), -0.5em -1em rgba(233, 169, 32, 0.75);
+  }
+
+  35% {
+    height: 2.5em;
+    box-shadow: 0.5em 0 rgba(61, 184, 143, 0.75), -0.5em 0 rgba(233, 169, 32, 0.75);
+  }
+
+  70% {
+    height: 0.5em;
+    box-shadow: 0.5em -1em rgba(61, 184, 143, 0.75), -0.5em 1em rgba(233, 169, 32, 0.75);
+  }
+
+  100% {
+    box-shadow: 0.5em 1em rgba(61, 184, 143, 0.75), -0.5em -1em rgba(233, 169, 32, 0.75);
+  }
+}
+
+.loader {
+  position: absolute;
+  top: calc(50% - 1.25em);
+  left: calc(50% - 1.25em);
+}

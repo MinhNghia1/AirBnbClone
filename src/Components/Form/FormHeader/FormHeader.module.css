@@ -1,3 +1,9 @@
+.formHeaderControl {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+}
+
 .btnFind {
   display: flex;
   align-items: center;
@@ -17,7 +23,12 @@
   border: 1px solid black;
 }
 
-@media screen and (max-width: 460px) {
+@media screen and (max-width: 600px) {
+  .formHeaderControl {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
   .btnFind {
     width: 20%;
   }

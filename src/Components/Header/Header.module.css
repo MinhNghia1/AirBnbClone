@@ -148,11 +148,13 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 635px) {
   .header .container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100%;
   }
   .header .container .logoBnb {
     display: none;
@@ -214,6 +216,15 @@
     font-weight: bold;
   }
   .header .container .InfoUser {
+    display: block;
+    position: absolute;
+    top: 200px;
+    right: 5px;
+  }
+  .header .container .InfoUser p {
+    display: none;
+  }
+  .header .container .InfoUser .iconWorld {
     display: none;
   }
 }

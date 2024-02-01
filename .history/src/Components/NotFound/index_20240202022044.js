@@ -1,0 +1,1 @@
+import { NotFoundImage } from "./NotFoundImage";
