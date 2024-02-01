@@ -152,20 +152,23 @@
         }
     }
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 635px) {
     .header{
         .container{
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+            height: 100%;
             .logoBnb{
-            display: none;
+           display: none;
             }
             .findRoomDrop{
                 z-index: 20;
                 margin-left: 0px;
                 .findRoomUp{
                     display: flex;
+                    
                     z-index: 100;
                     flex-wrap: wrap;
                     justify-content: center;
@@ -220,7 +223,16 @@
                 }
             }
             .InfoUser{
-                display: none;
+                display: block;
+                position: absolute;
+                top: 110px;
+                right: 0;
+                p{
+                    display: none;
+                }
+                .iconWorld{
+                    display: none;
+                }
             }
         }
     }   

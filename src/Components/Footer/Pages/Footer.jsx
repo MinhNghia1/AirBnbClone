@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Container,
-  List,
-  ListItem,
-  Grid,
-  Divider,
-  Typography,
-} from "@mui/material";
+import { Container, List, ListItem, Grid, Divider, Typography } from "@mui/material";
 import { LiFooter, TitleF, Divfooter, LiFooterBt } from "./index";
 
 export default function Footer() {
@@ -34,7 +27,9 @@ export default function Footer() {
                   <LiFooter href="#">Các tùy chọn hủy</LiFooter>
                 </ListItem>
                 <ListItem>
-                  <LiFooter href="#">Biện pháp ứng phó với đại dịch COVID-19 của chúng tôi</LiFooter>
+                  <LiFooter href="#">
+                    Biện pháp ứng phó với đại dịch COVID-19 của chúng tôi
+                  </LiFooter>
                 </ListItem>
                 <ListItem>
                   <LiFooter href="#">Báo cáo lo ngại của hàng xóm</LiFooter>
@@ -55,14 +50,10 @@ export default function Footer() {
               <TitleF>CỘNG ĐỒNG </TitleF>
               <List>
                 <ListItem>
-                  <LiFooter href="#">
-                    Sự đa dạng và cảm giác thân thuộc
-                  </LiFooter>
+                  <LiFooter href="#">Sự đa dạng và cảm giác thân thuộc</LiFooter>
                 </ListItem>
                 <ListItem>
-                  <LiFooter href="#">
-                    Tiện nghi phù hợp cho người khuyết tật
-                  </LiFooter>
+                  <LiFooter href="#">Tiện nghi phù hợp cho người khuyết tật</LiFooter>
                 </ListItem>
                 <ListItem>
                   <LiFooter href="#">Đối tác liên kết Airbnb</LiFooter>

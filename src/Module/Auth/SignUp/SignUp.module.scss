@@ -8,6 +8,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top;
+    
 
     .signInContent {
         width: 80%;
@@ -23,7 +24,6 @@
                 text-align: center;
                 color: var(--primary);
             }
-
             .signInFooter {
                 width: 100%;
                 display: flex;
@@ -67,7 +67,7 @@
     .signIn {
         .signInContent {
             width: 80%;
-            height: 60%;
+            height: 80%;
         }    
     }
 }
@@ -75,7 +75,7 @@
     .signIn {
         .signInContent {
             width: 80%;
-            height: 80%;
+            height: 90%;
             
         }    
     }

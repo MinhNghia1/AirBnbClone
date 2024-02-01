@@ -68,11 +68,13 @@ export default function Header() {
 
         <div className={styled.InfoUser}>
           <p>Trở Thành Chủ Nhà</p>
+          <div className={styled.iconWorld}>
+            <TbWorld
+              fontSize={25}
+              style={{ padding: "0px 10px", cursor: "pointer", color: "#FF385C" }}
+            />
+          </div>
 
-          <TbWorld
-            fontSize={25}
-            style={{ padding: "0px 10px", cursor: "pointer", color: "#FF385C" }}
-          />
           {currentUser ? <MenuUser /> : <MenuRegister />}
         </div>
       </div>

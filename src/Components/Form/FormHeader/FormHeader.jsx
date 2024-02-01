@@ -49,57 +49,61 @@ export default function FormHeader() {
       noValidate
       autoComplete="off"
     >
-      <Autocomplete
-        onChange={(event, value) => handleOptionClick(event, value)}
-        disablePortal
-        id="combo-box-demo"
-        options={locations.map((item) => {
-          return item.tenViTri;
-        })}
-        sx={{ width: { xs: "80%", sm: "25%", md: "35%" } }}
-        renderInput={(params) => (
-          <TextField
-            {...register("maViTri")}
-            autoFocus
-            {...params}
-            label="Địa Điểm"
-            sx={{
-              "& fieldset": { borderTopLeftRadius: "90px", borderBottomLeftRadius: "90px" },
-            }}
-          />
-        )}
-      />
+      <div className={styled.formHeaderControl}>
+        <Autocomplete
+          onChange={(event, value) => handleOptionClick(event, value)}
+          disablePortal
+          id="combo-box-demo"
+          options={locations.map((item) => {
+            return item.tenViTri;
+          })}
+          fullWidth
+          renderInput={(params) => (
+            <TextField
+              {...register("maViTri")}
+              autoFocus
+              {...params}
+              label="Địa Điểm"
+              sx={{
+                "& fieldset": { borderTopLeftRadius: "90px", borderBottomLeftRadius: "90px" },
+              }}
+            />
+          )}
+        />
 
-      <TextField
-        type="date"
-        id="input-with-icon-textfield"
-        sx={{
-          display: { xs: "none", sm: "block", md: "block", lg: "block", xl: "block" },
-        }}
-        InputProps={{
-          startAdornment: <InputAdornment position="start">Nhận Phòng:</InputAdornment>,
-        }}
-      />
-      <TextField
-        type="date"
-        sx={{
-          display: { xs: "none", sm: "block", md: "block", lg: "block", xl: "block" },
-        }}
-        id="input-with-icon-textfield"
-        InputProps={{
-          startAdornment: <InputAdornment position="start">Trả Phòng:</InputAdornment>,
-        }}
-      />
-      <TextField
-        sx={{
-          width: { sm: "14%", md: "14%" },
-          display: { xs: "none", sm: "block", md: "block", lg: "block", xl: "block" },
-        }}
-        id="input-with-icon-textfield"
-        InputProps={{
-          startAdornment: <InputAdornment position="start">Số Người:</InputAdornment>,
-        }}
-      />
+        <TextField
+          type="date"
+          id="input-with-icon-textfield"
+          sx={{
+            display: { xs: "none", sm: "block", md: "block", lg: "block", xl: "block" },
+          }}
+          fullWidth
+          InputProps={{
+            startAdornment: <InputAdornment position="start">Nhận Phòng:</InputAdornment>,
+          }}
+        />
+        <TextField
+          type="date"
+          sx={{
+            display: { xs: "none", sm: "block", md: "block", lg: "block", xl: "block" },
+          }}
+          fullWidth
+          id="input-with-icon-textfield"
+          InputProps={{
+            startAdornment: <InputAdornment position="start">Trả Phòng:</InputAdornment>,
+          }}
+        />
+        <TextField
+          fullWidth
+          sx={{
+            display: { xs: "none", sm: "block", md: "block", lg: "block", xl: "block" },
+          }}
+          id="input-with-icon-textfield"
+          InputProps={{
+            startAdornment: <InputAdornment position="start">Số Người:</InputAdornment>,
+          }}
+        />
+      </div>
       <button type="submit" className={styled.btnFind}>
         Tìm Kiếm
       </button>
