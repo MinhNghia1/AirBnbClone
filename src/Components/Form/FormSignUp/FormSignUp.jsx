@@ -155,7 +155,7 @@ export default function FormSignUp() {
       <Button
         disabled={loading}
         type="submit"
-        sx={{ width: "100%", marginTop: "30px" }}
+        sx={{ width: "100%", marginTop: "20px" }}
         variant="contained"
         color="primary"
       >
