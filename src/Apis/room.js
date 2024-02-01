@@ -57,9 +57,7 @@ export async function bookingRoom(payload) {
 
 export async function getHistoryRoom(userId) {
   try {
-    const response = await baseAPI.get(
-      `/dat-phong/lay-theo-nguoi-dung/${userId}`
-    );
+    const response = await baseAPI.get(`/dat-phong/lay-theo-nguoi-dung/${userId}`);
     return response.data.content;
   } catch (error) {
     if (error?.response) {
@@ -161,15 +159,25 @@ export const addRoom = async (payload) => {
 };
 export const upLoadImgRoom = async (roomId, payload) => {
   try {
-    const response = await baseAPI.post(
-      `/phong-thue/upload-hinh-phong`,
-      payload,
-      {
-        params: {
-          maPhong: roomId,
-        },
-      }
-    );
+    const response = await baseAPI.post(`/phong-thue/upload-hinh-phong`, payload, {
+      params: {
+        maPhong: roomId,
+      },
+    });
+    return response.data?.content;
+  } catch (error) {
+    if (error?.response) {
+      toast.error(error?.response?.data?.content);
+    } else {
+      throw error.message;
+    }
+  }
+};
+export const getListRoomPage = async (page) => {
+  try {
+    const response = await baseAPI.get(`/phong-thue/phan-trang-tim-kiem`, {
+      params: { pageIndex: page, pageSize: 8 },
+    });
     return response.data?.content;
   } catch (error) {
     if (error?.response) {

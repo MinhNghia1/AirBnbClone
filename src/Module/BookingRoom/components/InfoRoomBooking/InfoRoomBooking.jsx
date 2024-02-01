@@ -4,15 +4,23 @@ import { infoRoomBooking } from "../../../../Apis/bookingRoom";
 import LoadingPage from "../../../../Components/LoadingPage/LoadingPage";
 import { useNavigate } from "react-router-dom";
 import { FaWifi } from "react-icons/fa";
-import { LuDoorClosed } from "react-icons/lu";
-import { PiTelevisionSimpleBold, PiThermometerSimpleBold } from "react-icons/pi";
-import { FaUmbrellaBeach } from "react-icons/fa";
+import { MdBedroomParent } from "react-icons/md";
+import { PiTelevisionSimpleBold } from "react-icons/pi";
+import { MdOutlineIron } from "react-icons/md";
+import { TbAirConditioning } from "react-icons/tb";
+import { GiWashingMachine } from "react-icons/gi";
+import { FaSwimmingPool } from "react-icons/fa";
+import { TbToolsKitchen3 } from "react-icons/tb";
+import { getListRooms } from "../../../../Apis/room";
+import dayjs from "dayjs";
 export default function InfoRoomBooking({ idUser }) {
   const navigate = useNavigate();
-  const [bookedRoom, setBookedRoom] = useState(null);
+  const [bookedRoom, setBookedRoom] = useState([]);
+  const [listRoom, setListRoom] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     getListBookingRoom(idUser);
+    getInfoRoomBooked();
   }, []);
 
   const getListBookingRoom = async (idUser) => {
@@ -26,63 +34,72 @@ export default function InfoRoomBooking({ idUser }) {
       setLoading(false);
     }
   };
+  const getInfoRoomBooked = async () => {
+    try {
+      const resp = await getListRooms();
+      setListRoom(resp);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   const handleBackHome = () => {
     navigate("/");
   };
   if (loading) {
     return <LoadingPage />;
   }
-  if (!bookedRoom) {
-    return;
-  }
+
   return (
     <div className={styled.infoRoomBooking}>
       <div className={styled.container}>
         <div className={styled.titlePage}>Chuyến đi</div>
         <div className={styled.content}>
           <div className={styled.bookingLeft}>
-            {bookedRoom.map((room, index) => (
-              <div key={index} className={styled.cardBooking}>
-                <div className={styled.cardBookingTop}>
-                  <img
-                    src="https://airbnb.cybersoft.edu.vn/public/images/room/1658417426651_dirtiest-1170x650.jpg"
-                    alt="hotel"
-                  />
-                </div>
-                <div className={styled.cardBookingBody}>
-                  <div className={styled.cardBookingBodyTitle}>
-                    <div className={styled.cardBookingBodyTitleLeft}>
-                      <h2>KHÁCH SẠN PALACE</h2>
-                      <p>2023-10-09T00:00:00 - 2023-10-13T00:00:00</p>
+            {bookedRoom.map((room, index) => {
+              const infoRoom = listRoom.find((item) => item.id === room.maPhong);
+              const ngayDen = dayjs(`${room.ngayDen}`);
+              const ngayDi = dayjs(`${room.ngayDi}`);
+              const soNgay = ngayDi.diff(ngayDen, "day");
+
+              return (
+                <div key={index} className={styled.cardBooking}>
+                  <div className={styled.cardBookingTop}>
+                    <img src={infoRoom?.hinhAnh} alt="hotel" />
+                  </div>
+                  <div className={styled.cardBookingBody}>
+                    <div className={styled.cardBookingBodyTitle}>
+                      <div className={styled.cardBookingBodyTitleLeft}>
+                        <h2>{infoRoom?.tenPhong}</h2>
+                        <p>
+                          {dayjs(room.ngayDen).format(`DD/MM/YYYY HH:mm:ss`)}
+                          {" =>"}
+                          {dayjs(room.ngayDi).format(`DD/MM/YYYY HH:mm:ss`)}
+                        </p>
+                      </div>
+                      <div className={styled.cardBookingBodyTitleRight}>
+                        <h2>{infoRoom.giaTien * soNgay}$</h2>
+                        <p>/{soNgay} ngày</p>
+                      </div>
                     </div>
-                    <div className={styled.cardBookingBodyTitleRight}>
-                      <h2>3000</h2>
-                      <p> $/4 ngày</p>
+                    <div className={styled.cardBookingBodyContent}>
+                      <h3>Tiện ích</h3>
+                      <div className={styled.cardBookingBodyContentItem}>
+                        <div className={styled.itemIcon}>
+                          {infoRoom.wifi ? <FaWifi /> : ""}
+                          {infoRoom.phongNgu ? <MdBedroomParent /> : ""}
+                          {infoRoom.tivi ? <PiTelevisionSimpleBold /> : ""}
+                          {infoRoom.mayGiat ? <GiWashingMachine /> : ""}
+                          {infoRoom.banLa ? <MdOutlineIron /> : ""}
+                          {infoRoom.dieuHoa ? <TbAirConditioning /> : ""}
+                          {infoRoom.hoBoi ? <FaSwimmingPool /> : ""}
+                          {infoRoom.bep ? <TbToolsKitchen3 /> : ""}
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div className={styled.cardBookingBodyContent}>
-                    <h3>Tiện ích</h3>
-                    <div className={styled.cardBookingBodyContentItem}>
-                      <div className={styled.itemIcon}>
-                        <FaWifi />
-                      </div>
-                      <div className={styled.itemIcon}>
-                        <LuDoorClosed />
-                      </div>
-                      <div className={styled.itemIcon}>
-                        <PiTelevisionSimpleBold />
-                      </div>
-                      <div className={styled.itemIcon}>
-                        <PiThermometerSimpleBold />
-                      </div>
-                      <div className={styled.itemIcon}>
-                        <FaUmbrellaBeach />
-                      </div>
-                    </div>
-                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
           <div className={styled.bookingRight}>
             <div className={styled.bookingRightCard}>
