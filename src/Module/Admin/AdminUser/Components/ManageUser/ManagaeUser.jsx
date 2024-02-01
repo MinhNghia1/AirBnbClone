@@ -14,6 +14,7 @@ import ModalAdmin from "../ModalAdmin/ModalAdmin";
 import { IoReload } from "react-icons/io5";
 import Button from "@mui/material/Button";
 import swal from "sweetalert2";
+import { toast } from "react-toastify";
 export default function ManagaeUser() {
   const [numberPage, setNumberPage] = useState(1);
   const [totalPages, setTotalPages] = useState(null);
@@ -35,15 +36,17 @@ export default function ManagaeUser() {
   useEffect(() => {
     if (debounceSearchTerm) {
       handFindUser?.(debounceSearchTerm);
+    } else if (debounceSearchTerm === "") {
+      getList();
+      handleGetListUserPage(numberPage);
     }
   }, [debounceSearchTerm]);
   const handFindUser = async (keyWord) => {
     try {
       const resp = await findUser(keyWord);
+      console.log(resp);
       if (resp) {
         setInfoUser(resp);
-      } else {
-        handleGetListUserPage(numberPage);
       }
     } catch (error) {
       console.error(error);
@@ -112,6 +115,7 @@ export default function ManagaeUser() {
         editUser={userEdit}
         isEditing={isEditing}
         setNulleditUset={() => setUserEdit()}
+        refresh={handleReFresh}
       />
       <div className={styled.btnAdmin}>
         <button onClick={handleOpenModal}>Thêm</button>

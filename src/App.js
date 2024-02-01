@@ -40,7 +40,7 @@ function App() {
           <Route path="/admin/ManageLocation" element={<PrivateRouteAdmin />}>
             <Route path="/admin/ManageLocation"></Route>
           </Route>
-          <Route path="/admin/ManageInfo" element={<PrivateRouteAdmin />}>
+          <Route path="/admin/ManageInfoRoom" element={<PrivateRouteAdmin />}>
             <Route index element={<AdminInfo />}></Route>
           </Route>
           <Route path="/admin/ManageBooking" element={<PrivateRouteAdmin />}>
