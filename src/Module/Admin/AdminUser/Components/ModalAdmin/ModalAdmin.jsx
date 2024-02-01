@@ -69,7 +69,14 @@ const role = [
     label: "ADMIN",
   },
 ];
-export default function ModalAdmin({ onOpen, onClose, editUser, isEditing, setNulleditUset }) {
+export default function ModalAdmin({
+  onOpen,
+  onClose,
+  editUser,
+  isEditing,
+  setNulleditUset,
+  refresh,
+}) {
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = () => setShowPassword(!showPassword);
@@ -111,7 +118,7 @@ export default function ModalAdmin({ onOpen, onClose, editUser, isEditing, setNu
     try {
       setDisableButton(true);
       const resp = await AddUser(user);
-
+      refresh();
       if (resp) {
         reset();
         swal.fire("Thêm User Thành Công", "", "success");
@@ -141,6 +148,7 @@ export default function ModalAdmin({ onOpen, onClose, editUser, isEditing, setNu
   const handleUpdateUser = async (user) => {
     try {
       const resp = await updateUser(user.id, user);
+      refresh();
       if (resp) {
         reset();
         swal.fire("Update User Thành Công", "", "success");

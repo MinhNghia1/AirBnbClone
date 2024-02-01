@@ -173,3 +173,17 @@ export const upLoadImgRoom = async (roomId, payload) => {
     }
   }
 };
+export const getListRoomPage = async (page) => {
+  try {
+    const response = await baseAPI.get(`/phong-thue/phan-trang-tim-kiem`, {
+      params: { pageIndex: page, pageSize: 8 },
+    });
+    return response.data?.content;
+  } catch (error) {
+    if (error?.response) {
+      toast.error(error?.response?.data?.content);
+    } else {
+      throw error.message;
+    }
+  }
+};

@@ -25,7 +25,7 @@ baseAPI.interceptors.response.use(
   },
   (error) => {
     // mã lỗi 403 => token hết hạn => đăng xuất
-    if (error.response.status === 403) {
+    if (error.response.content === "token user hết hạn hoặc không đúng") {
       localStorage.removeItem("currenuser");
       window.location.replace("/SiginUser");
     }

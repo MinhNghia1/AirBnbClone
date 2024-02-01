@@ -155,7 +155,7 @@ export default function HeaderAdmin() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Mini variant drawer
+            Admin
           </Typography>
         </Toolbar>
       </AppBar>
@@ -183,7 +183,7 @@ export default function HeaderAdmin() {
           {[
             { name: "ManageUser", path: "/admin/ManageUser" },
             { name: "ManageLocation", path: "/admin/ManageLocation" },
-            { name: "ManageInfo", path: "/admin/ManageInfo" },
+            { name: "ManageInfoRoom", path: "/admin/ManageInfoRoom" },
             { name: "ManageBooking", path: "/admin/ManageBooking" },
           ].map((text, index) => (
             <ListItem
