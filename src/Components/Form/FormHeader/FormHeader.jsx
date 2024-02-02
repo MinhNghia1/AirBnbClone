@@ -30,7 +30,8 @@ export default function FormHeader() {
     event.stopPropagation();
   };
   const handleRoomByLocation = (value) => {
-    const viTri = locations.find((item) => value.maViTri === item.tenViTri);
+    const viTri = locations.find((item) => value?.maViTri === item.tenViTri);
+
     if (viTri && viTri.id) {
       navigate(`/RoomByCity/${viTri.id}`);
     }

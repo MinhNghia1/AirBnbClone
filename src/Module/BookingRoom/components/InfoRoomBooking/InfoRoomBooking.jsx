@@ -48,7 +48,12 @@ export default function InfoRoomBooking({ idUser }) {
   if (loading) {
     return <LoadingPage />;
   }
-
+  if (!bookedRoom) {
+    return;
+  }
+  if (!listRoom) {
+    return;
+  }
   return (
     <div className={styled.infoRoomBooking}>
       <div className={styled.container}>
@@ -92,6 +97,7 @@ export default function InfoRoomBooking({ idUser }) {
                           {infoRoom?.banLa ? <MdOutlineIron /> : ""}
                           {infoRoom?.dieuHoa ? <TbAirConditioning /> : ""}
                           {infoRoom?.hoBoi ? <FaSwimmingPool /> : ""}
+                          {infoRoom?.bep ? <TbToolsKitchen3 /> : ""}
                         </div>
                       </div>
                     </div>
