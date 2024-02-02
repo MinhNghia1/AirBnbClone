@@ -113,7 +113,6 @@ export default function PersonalInfo({ getInfo }) {
               <div>{inforUser.phone}</div>
             </div>
           </div>
-          s
         </div>
       </div>
     </div>

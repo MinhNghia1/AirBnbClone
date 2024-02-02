@@ -15,6 +15,7 @@ import { FaPlane } from "react-icons/fa";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import { useNavigate } from "react-router-dom";
 import { getUserId } from "../../../Apis/user";
+import { IoArrowBackSharp } from "react-icons/io5";
 export default function MenuUser() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [avatar, setAvatar] = React.useState(null);
@@ -71,7 +72,10 @@ export default function MenuUser() {
     setAnchorEl(null);
     navigate(`/BookingRoom/${currentUser.user.id}`);
   };
-
+  const handleBackHome = () => {
+    setAnchorEl(null);
+    navigate("/");
+  };
   return (
     <React.Fragment>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
@@ -158,11 +162,18 @@ export default function MenuUser() {
             Trang Quản Lý
           </MenuItem>
         )}
+
         <MenuItem onClick={handleClose}>
           <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>
           Settings
+        </MenuItem>
+        <MenuItem onClick={handleBackHome}>
+          <ListItemIcon>
+            <IoArrowBackSharp fontSize="small" />
+          </ListItemIcon>
+          BackHome
         </MenuItem>
         <MenuItem onClick={handleLogout}>
           <ListItemIcon>
