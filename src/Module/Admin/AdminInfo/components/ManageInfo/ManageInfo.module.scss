@@ -59,6 +59,19 @@
     }
     
 }
+    .btnEditImage{
+        cursor: pointer;
+        padding: 5px 10px;
+        background-color: brown;
+        border: none;
+        color: #fff;
+        border-radius: 90px
+        ;
+        transition: all 0.5s;
+        &:hover{
+            background-color: rgb(167, 58, 58);
+        }
+    }
     .btnInfo{
         cursor: pointer;
         padding: 10px 20px;

@@ -159,7 +159,11 @@ export const addRoom = async (payload) => {
 };
 export const upLoadImgRoom = async (roomId, payload) => {
   try {
-    const response = await baseAPI.post(`/phong-thue/upload-hinh-phong`, payload, {
+    const formData = new FormData();
+    for (let key in payload) {
+      formData.append(key, payload[key]);
+    }
+    const response = await baseAPI.post(`/phong-thue/upload-hinh-phong`, formData, {
       params: {
         maPhong: roomId,
       },

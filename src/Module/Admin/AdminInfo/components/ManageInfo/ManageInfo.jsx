@@ -16,6 +16,7 @@ import { getLocation } from "../../../../../Apis/viTri";
 import ModalShowInfo from "../ModalAdminInfo/ModalShowInfo/ModalShowInfo";
 import ModalAdd from "../ModalAdminInfo/ModalAdd";
 import { toast } from "react-toastify";
+import ModalEditImageRoom from "../ModalAdminInfo/ModalEditImage/ModalEditImageRoom";
 export default function ManageInfo() {
   // state show Info rooms
   const [showinFoRoomSelected, setShowinFoRoomSelected] = useState(null);
@@ -33,7 +34,9 @@ export default function ManageInfo() {
   const [showModalAdd, setShowModalAdd] = useState(false);
   //state save room edit
   const [editRoom, setEditRoom] = useState(null);
-
+  //state open modalEditImageroom
+  const [openModalImage, setOpenModalImage] = useState(false);
+  const [idRoom, setIdRoom] = useState(null);
   //get info and pagination room
   useEffect(() => {
     getNumberPage();
@@ -137,6 +140,13 @@ export default function ManageInfo() {
       }
     } catch (error) {}
   };
+  const handleEditImage = (roomId) => {
+    setOpenModalImage(true);
+    setIdRoom(roomId);
+  };
+  const handleCloseEditImage = (value) => {
+    setOpenModalImage(value);
+  };
   return (
     <div className={styled.manageInfo}>
       <ModalShowInfo
@@ -150,6 +160,12 @@ export default function ManageInfo() {
         resetRoom={handleRefreshRooms}
         editRoom={editRoom}
         setNullEditRoom={setEditRoom}
+      />
+      <ModalEditImageRoom
+        isOpen={openModalImage}
+        onclose={handleCloseEditImage}
+        idRoom={idRoom}
+        refreshPage={handleRefreshRooms}
       />
       <div className={styled.btnAdminInfo}>
         <button onClick={handleOpenModalAdd}>Thêm</button>
@@ -214,7 +230,15 @@ export default function ManageInfo() {
                 <TableCell style={{ fontSize: "14px" }} align="center">
                   {item.tenPhong}
                 </TableCell>
-                <TableCell style={{ fontSize: "14px" }} align="center">
+                <TableCell
+                  style={{
+                    fontSize: "14px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                  align="center"
+                >
                   <img
                     style={{ objectFit: "cover" }}
                     width={60}
@@ -222,6 +246,9 @@ export default function ManageInfo() {
                     src={item.hinhAnh}
                     alt=""
                   />
+                  <button onClick={() => handleEditImage(item.id)} className={styled.btnEditImage}>
+                    Chỉnh sửa
+                  </button>
                 </TableCell>
                 <TableCell style={{ fontSize: "14px" }} align="center">
                   {locationByItem?.tenViTri}
