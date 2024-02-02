@@ -81,12 +81,34 @@
   padding: 0px 30px;
   margin: -20px 0px;
 }
+.account .container .content .accountRight .changeInfoUser {
+  padding: 20px 0px;
+  border-bottom: 1px solid gray;
+  display: flex;
+  justify-content: flex-end;
+}
+.account .container .content .accountRight .changeInfoUser button {
+  padding: 10px 20px;
+  border: none;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 10px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.account .container .content .accountRight .changeInfoUser button:hover {
+  background-color: rgb(250, 26, 63);
+}
 .account .container .content .accountRight .infoUserItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 0px;
   border-bottom: 1px solid gray;
+}
+.account .container .content .accountRight .infoUserItem .btnChangeInfo {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 480px) {
@@ -97,5 +119,6 @@
   .account .container .content .accountRight {
     padding: 0px 30px;
     margin-top: 10px;
+    margin-bottom: 20px;
   }
 }

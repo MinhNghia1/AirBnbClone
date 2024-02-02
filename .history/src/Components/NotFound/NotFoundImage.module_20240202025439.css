@@ -1,0 +1,11 @@
+.root {
+    padding-top: rem(80px);
+    padding-bottom: rem(80px);
+}
+.content{
+    width: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}

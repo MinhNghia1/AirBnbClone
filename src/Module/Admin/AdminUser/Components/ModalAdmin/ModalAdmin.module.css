@@ -1,0 +1,30 @@
+.formButtonAdmin {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.formButtonAdmin .btnAddAdmin {
+  background-color: var(--primary);
+  border: none;
+  border-radius: 90px;
+  padding: 10px 20px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.7s;
+}
+.formButtonAdmin .btnAddAdmin:hover {
+  background-color: rgb(251, 54, 54);
+}
+.formButtonAdmin .btnReset {
+  margin-left: 10px;
+  background-color: gray;
+  border: none;
+  border-radius: 90px;
+  padding: 10px 20px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.7s;
+}
+.formButtonAdmin .btnReset:hover {
+  background-color: rgb(24, 23, 23);
+}

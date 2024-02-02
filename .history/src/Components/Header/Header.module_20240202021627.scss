@@ -1,0 +1,275 @@
+
+.header{
+    --black-color : black;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #fff; /* hoặc màu nền mong muốn */
+    z-index: 500;
+    
+    .container{
+        display: flex;
+        height: 40px;
+        justify-content: space-between;
+        align-items: center;
+        width: 95%;
+        margin: auto;
+        padding:  1.25rem 0.5rem;
+        .logoBnb{
+        display: flex;
+        align-items: center;
+        z-index: 20;
+        cursor: pointer;
+        span{
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 20px;
+            margin-left: 5px;
+        }
+        }
+        .findRoomDrop{
+            display: flex;
+            z-index: 20;
+            margin-left: 100px;
+            .findRoomUp{
+                display: flex;
+                z-index: 100;
+                flex-wrap: wrap;
+                justify-content: center;
+                position: relative;
+                align-self: center;
+                box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+                width: 100%;
+                background-color: white;
+                border-radius: var(--borderradius);
+                padding: 8px 10px 12px 10px;
+                font-weight: bold;
+                height: 20px;
+                font-size: 10px;
+                
+                cursor: pointer;
+                .textFindHeader2{
+                    border-right: 1px solid gray;
+                    border-left: 1px solid gray;
+                    padding: 6px 20px 0px 20px;
+                    height: 20px;
+                    
+                }
+                .textFindHeader1{
+                    padding: 6px 20px 0px 0px;
+                    height: 20px;
+                }
+                .textFindHeader3{
+                    padding: 6px 0px 0px 20px;
+                    height: 20px;
+                }
+                .searchLogo{
+                    display: flex;
+                    align-items: center;
+                    margin-left: 30px;
+                    
+                    background-color: var(--primary);
+                    padding: 4px;
+                    border-radius: var(--borderradius);
+                }
+            }
+            .findRoomDown{
+                display: flex;
+                flex-wrap: wrap;
+                cursor: pointer;
+                justify-content: center;
+                align-items: center;
+                height: 54px;
+                z-index: 20;
+                div{
+                    margin-left: 35px;
+                    font-size: 10px;
+                    font-weight: bold;
+                }
+            }
+        }
+       
+        .formInputDropdown{
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            left: 0;
+            width: 100vw;  
+            z-index: 10;
+            transition: all 0.3s;
+            padding-bottom: 15px;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px; /* hoặc màu đường viền mong muốn */
+            padding-top: 30px;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+        }
+        .formInputDropdownBlock{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;  
+            z-index: 10;
+            transition: all 0.3s;
+            padding-bottom: 15px;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px; /* hoặc màu đường viền mong muốn */
+            padding-top: 6.4rem;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+        }
+        .InfoUser{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 20;
+            p{
+                padding: 10px 20px;
+                transition: all 0.5s;
+                cursor: pointer;
+                font-size: 14px;
+                white-space: nowrap;
+            }
+            p:hover{
+                background-color: var(--primary);
+                border-radius: var(--borderradius);
+                font-family: 500;
+                color: #fff;
+            }
+            .buttonUser{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 5px 10px;
+                width: 20%;
+                border: 1px solid black;
+                border-radius: var(--borderradius);
+                cursor: pointer;
+            }
+            .buttonUser:hover{
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 635px) {
+    .header{
+        .container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            .logoBnb{
+           display: none;
+            }
+            .findRoomDrop{
+                z-index: 20;
+                margin-left: 0px;
+                .findRoomUp{
+                    display: flex;
+                    
+                    z-index: 100;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    position: relative;
+                    align-self: center;
+                    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 3px;
+                    width: 100%;
+                    background-color: white;
+                    border-radius: var(--borderradius);
+                    padding: 8px 12px 12px 12px;
+                    font-weight: bold;
+                    height: 20px;
+                    font-size: 10px;
+                    
+                    cursor: pointer;
+                    .textFindHeader2{
+                        border-right: 1px solid gray;
+                        border-left: 1px solid gray;
+                        padding: 6px 20px 0px 20px;
+                        height: 20px;
+                        
+                    }
+                    .textFindHeader1{
+                        padding: 6px 20px 0px 0px;
+                        height: 20px;
+                    }
+                    .textFindHeader3{
+                        padding: 6px 0px 0px 20px;
+                        height: 20px;
+                    }
+                    .searchLogo{
+                        display: flex;
+                        align-items: center;
+                        margin-left: 10px;
+                        background-color: var(--primary);
+                        border-radius: var(--borderradius);
+                    }
+                }
+                .findRoomDown{
+                    display: flex;
+                    flex-wrap: wrap;
+                    cursor: pointer;
+                    justify-content: center;
+                    align-items: center;
+                    height: 54px;
+                    z-index: 20;
+                    div{
+                        margin-left: 35px;
+                        font-size: 10px;
+                        font-weight: bold;
+                    }
+                }
+            }
+            .InfoUser{
+                display: block;
+                position: absolute;
+                top: 200px;
+                right: 0;
+                p{
+                    display: none;
+                }
+                .iconWorld{
+                    display: none;
+                }
+            }
+        }
+    }   
+}
+@media screen and (max-width: 768px) {
+    
+        .container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .logoBnb{
+            display: flex;
+           
+            align-items: center;
+            }
+            
+            .InfoUser{        
+                p{
+                    display: none;
+                    padding: 10px 20px;
+                    transition: all 0.5s;
+                    cursor: pointer;
+                    font-size: 14px;
+                    white-space: nowrap;
+                }
+            }
+        }
+}
+@media screen and (max-width: 1200px) {
+    .header{
+        .container{
+            .findRoomDrop{
+                display: flex;
+                z-index: 20;
+                margin-left: 0px;
+            }
+        }
+    }
+    
+}

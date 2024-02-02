@@ -1,0 +1,31 @@
+.formButton {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.formButton .btnUpdate {
+  right: 25px;
+  background-color: var(--primary);
+  border-radius: var(--borderradius);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+.formButton .btnUpdate:hover {
+  background-color: rgb(233, 53, 53);
+}
+.formButton .btnCancel {
+  right: 25px;
+  background-color: gray;
+  border-radius: var(--borderradius);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+.formButton .btnCancel:hover {
+  background-color: rgba(128, 128, 128, 0.552);
+}
