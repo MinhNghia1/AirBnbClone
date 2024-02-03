@@ -200,8 +200,10 @@ export default function AdminLocation() {
   };
   const handleClose = (value) => {
     setIsOpen(value);
-    queryClient.invalidateQueries(["location"]);
+    queryClient.invalidateQueries(["location"])
   };
+
+
   return (
     <div style={{ width: "100%", marginTop: "100px", marginRight: "50px" }}>
       <Box display={"flex"} justifyContent={"right"} mb={2}>

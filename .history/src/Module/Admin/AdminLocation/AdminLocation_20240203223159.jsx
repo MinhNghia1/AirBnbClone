@@ -196,12 +196,18 @@ export default function AdminLocation() {
     setIdSelected(locationId);
     if (idSelected !== null && idSelected !== undefined && idSelected == locationId) {
       setIsOpen(true);
+      // console.log(idSelected,"ID");
     }
   };
   const handleClose = (value) => {
     setIsOpen(value);
-    queryClient.invalidateQueries(["location"]);
   };
+  // const handleUpdateImg = (value) => {
+  //   if (value) {
+  //     queryClient.invalidateQueries(["location"]);
+  //   }
+  // };
+
   return (
     <div style={{ width: "100%", marginTop: "100px", marginRight: "50px" }}>
       <Box display={"flex"} justifyContent={"right"} mb={2}>

@@ -35,15 +35,18 @@ export default function ModalEditImage({ isOpen, onclose, locationId }) {
     try {
       setIsLoading(true);
       const resp = await editImg(hinhAnh, Id);
-      onclose(false);
 
-      if (resp) {
+      if (resp && resp.content) {
+        console.log(object);
+        onclose(false);
         Swal.fire({
           icon: "success",
+          title: "Upload Successful", // Add success message
         });
       } else {
         Swal.fire({
           icon: "error",
+          title: "Upload Failed", // Add error message
         });
       }
     } catch (error) {

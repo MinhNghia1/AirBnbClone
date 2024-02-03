@@ -69,10 +69,13 @@ export async function updateLocation(id, payload) {
 
 export const editImg = async (formFile, maViTri) => {
   try {
+    import { toast } from "react-toastify";
     const formData = new FormData();
      for (let key in formFile) {
        formData.append(key, formFile[key]);
      }
+    console.log("formData:", formData);
+
     const resp = await baseAPI.post(`/vi-tri/upload-hinh-vitri?maViTri=${maViTri}`, formData);
 
     return resp.data?.content;
