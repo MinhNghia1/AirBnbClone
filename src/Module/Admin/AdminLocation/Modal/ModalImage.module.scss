@@ -1,0 +1,43 @@
+.headerModal{
+    font-weight: 600;
+    border-bottom: 1px solid gray;
+    p{
+        text-align: center;
+        margin: 5px;
+    }
+}
+.modalBody{
+    margin-bottom: 15px;
+    border-bottom: 1px solid gray;
+    input{
+        margin: 15px 0px;
+    }
+}
+.modalFooter{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    .btnEdit{
+       cursor: pointer;
+        background-color: green;
+        border-radius: 10px;
+        padding: 5px 10px;
+        color: white;
+        border: none;
+        &:hover{
+            background-color: #04a91a;
+        }
+    }
+    .btnCancel{
+        cursor: pointer;
+        margin-left: 10px;
+        background-color: rgb(12, 12, 12);
+        border-radius: 10px;
+        padding: 5px 10px;
+        color: white;
+        border: none;
+        &:hover{
+            background-color: gray;
+        }
+    }
+}
