@@ -6,12 +6,15 @@ import { FaCheck } from "react-icons/fa";
 import ModalEditImage from "../Modal/modalEditImage/ModalEditImage";
 import ModalUpdateInfo from "../Modal/ModalUpdateInfo/ModalUpdateInfo";
 import dayjs from "dayjs";
+import LoadingPage from "../../../../Components/LoadingPage/LoadingPage";
 export default function PersonalInfo({ getInfo }) {
   const [inforUser, setInforUser] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenUpDate, setIsOpenUpDate] = useState(false);
+  const [loadingPage, setLoadingPage] = useState(true);
   const param = useParams();
   useEffect(() => {
+    setLoadingPage(true);
     getUser();
   }, []);
   const getUser = async () => {
@@ -20,11 +23,11 @@ export default function PersonalInfo({ getInfo }) {
       setInforUser(resp);
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoadingPage(false);
     }
   };
-  if (!inforUser) {
-    return;
-  }
+
   const handleOnOpen = () => {
     setIsOpen(true);
   };
@@ -49,6 +52,12 @@ export default function PersonalInfo({ getInfo }) {
       getUser();
     }
   };
+  if (loadingPage) {
+    return <LoadingPage />;
+  }
+  if (!inforUser) {
+    return;
+  }
   return (
     <div className={styled.account}>
       <ModalEditImage isOpen={isOpen} onclose={handleClose} onUpdate={handleUpdateAvatar} />

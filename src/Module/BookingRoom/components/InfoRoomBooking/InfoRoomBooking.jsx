@@ -21,13 +21,13 @@ export default function InfoRoomBooking({ idUser }) {
   useEffect(() => {
     getListBookingRoom(idUser);
     getInfoRoomBooked();
+    setLoading(true);
   }, []);
 
   const getListBookingRoom = async (idUser) => {
     try {
       const resp = await infoRoomBooking(idUser);
       setBookedRoom(resp);
-      setLoading(true);
     } catch (error) {
       console.error(error);
     } finally {

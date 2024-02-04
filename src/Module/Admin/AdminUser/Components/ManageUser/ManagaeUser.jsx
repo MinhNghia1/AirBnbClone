@@ -15,6 +15,7 @@ import { IoReload } from "react-icons/io5";
 import Button from "@mui/material/Button";
 import swal from "sweetalert2";
 import { toast } from "react-toastify";
+import LoadingPage from "../../../../../Components/LoadingPage/LoadingPage";
 export default function ManagaeUser() {
   const [numberPage, setNumberPage] = useState(1);
   const [totalPages, setTotalPages] = useState(null);
@@ -24,6 +25,7 @@ export default function ManagaeUser() {
   const [isOpenModal, setIsopenModal] = useState(false);
   const [userEdit, setUserEdit] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
+  const [loadingPage, setLoadingPage] = useState(false);
   const timer = useRef();
   const handleSearch = (evt) => {
     setSearchTerm(evt.target.value);
@@ -58,11 +60,15 @@ export default function ManagaeUser() {
   }, [numberPage]);
   const getList = async () => {
     try {
+      setLoadingPage(true);
       const resp = await getListUser();
       const numberUser = Math.ceil(resp.length / 8);
+
       setTotalPages(numberUser);
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoadingPage(false);
     }
   };
   const handleGetListUserPage = async (numberPage) => {
@@ -107,6 +113,9 @@ export default function ManagaeUser() {
       console.error(error);
     }
   };
+  if (loadingPage) {
+    return <LoadingPage />;
+  }
   return (
     <div className={styled.manageUser}>
       <ModalAdmin
