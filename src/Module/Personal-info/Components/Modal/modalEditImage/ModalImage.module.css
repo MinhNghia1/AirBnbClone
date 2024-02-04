@@ -1,26 +1,27 @@
-.headerModal {
+.formInputImage {
+  overflow: hidden;
+}
+.formInputImage .headerModal {
   font-weight: 600;
   border-bottom: 1px solid gray;
 }
-.headerModal p {
+.formInputImage .headerModal p {
   text-align: center;
   margin: 5px;
 }
-
-.modalBody {
+.formInputImage .modalBody {
   margin-bottom: 15px;
   border-bottom: 1px solid gray;
 }
-.modalBody input {
+.formInputImage .modalBody input {
   margin: 15px 0px;
 }
-
-.modalFooter {
+.formInputImage .modalFooter {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
-.modalFooter .btnEdit {
+.formInputImage .modalFooter .btnEdit {
   cursor: pointer;
   background-color: green;
   border-radius: 10px;
@@ -28,10 +29,10 @@
   color: white;
   border: none;
 }
-.modalFooter .btnEdit:hover {
+.formInputImage .modalFooter .btnEdit:hover {
   background-color: #04a91a;
 }
-.modalFooter .btnCancel {
+.formInputImage .modalFooter .btnCancel {
   cursor: pointer;
   margin-left: 10px;
   background-color: rgb(12, 12, 12);
@@ -40,6 +41,6 @@
   color: white;
   border: none;
 }
-.modalFooter .btnCancel:hover {
+.formInputImage .modalFooter .btnCancel:hover {
   background-color: gray;
 }
