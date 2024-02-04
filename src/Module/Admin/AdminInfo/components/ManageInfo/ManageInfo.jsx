@@ -17,6 +17,8 @@ import ModalShowInfo from "../ModalAdminInfo/ModalShowInfo/ModalShowInfo";
 import ModalAdd from "../ModalAdminInfo/ModalAdd";
 import { toast } from "react-toastify";
 import ModalEditImageRoom from "../ModalAdminInfo/ModalEditImage/ModalEditImageRoom";
+import LoadingPage from "../../../../../Components/LoadingPage/LoadingPage";
+
 export default function ManageInfo() {
   // state show Info rooms
   const [showinFoRoomSelected, setShowinFoRoomSelected] = useState(null);
@@ -37,6 +39,9 @@ export default function ManageInfo() {
   //state open modalEditImageroom
   const [openModalImage, setOpenModalImage] = useState(false);
   const [idRoom, setIdRoom] = useState(null);
+
+  const [loadingPage, setLoadingPage] = useState(true);
+
   //get info and pagination room
   useEffect(() => {
     getNumberPage();
@@ -58,9 +63,12 @@ export default function ManageInfo() {
   const getListRoomByPage = async (page) => {
     try {
       const resp = await getListRoomPage(page);
+
       setInfoRooms(resp.data);
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoadingPage(false);
     }
   };
   const getListLocation = async () => {
@@ -147,6 +155,9 @@ export default function ManageInfo() {
   const handleCloseEditImage = (value) => {
     setOpenModalImage(value);
   };
+  if (loadingPage) {
+    return <LoadingPage />;
+  }
   return (
     <div className={styled.manageInfo}>
       <ModalShowInfo
