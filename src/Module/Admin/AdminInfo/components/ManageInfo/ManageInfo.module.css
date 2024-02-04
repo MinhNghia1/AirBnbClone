@@ -52,6 +52,18 @@
   background-color: #fff;
   border-radius: 20px;
 }
+.manageInfo .btnEditImage {
+  cursor: pointer;
+  padding: 5px 10px;
+  background-color: brown;
+  border: none;
+  color: #fff;
+  border-radius: 90px;
+  transition: all 0.5s;
+}
+.manageInfo .btnEditImage:hover {
+  background-color: rgb(167, 58, 58);
+}
 .manageInfo .btnInfo {
   cursor: pointer;
   padding: 10px 20px;

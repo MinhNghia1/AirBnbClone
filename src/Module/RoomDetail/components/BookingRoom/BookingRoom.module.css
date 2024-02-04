@@ -5,6 +5,7 @@
   position: sticky;
   top: 120px;
   z-index: 100;
+  margin-left: 50px;
 }
 .bookingRoom .bookingContent {
   padding: 20px;

@@ -1,5 +1,6 @@
 .account {
   margin-top: 100px;
+  margin-bottom: 40px;
 }
 .account .container {
   width: 85%;
@@ -111,6 +112,12 @@
   cursor: pointer;
 }
 
+@media screen and (max-width: 786px) {
+  .account .container .content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 @media screen and (max-width: 480px) {
   .account .container .content {
     display: grid;
@@ -120,5 +127,11 @@
     padding: 0px 30px;
     margin-top: 10px;
     margin-bottom: 20px;
+  }
+  .account .container .content .accountRight .changeInfoUser {
+    padding: 20px 0px;
+    border-bottom: 1px solid gray;
+    display: flex;
+    justify-content: flex-start;
   }
 }
