@@ -20,6 +20,7 @@ const style = {
   bgcolor: "background.paper",
   boxShadow: 24,
   borderRadius: "15px",
+  border: "1px solid black",
   display: "grid",
   gap: "15px",
   p: 4,
@@ -120,19 +121,29 @@ export default function ModalUpdateInfo({
             error={errors.name}
             {...register("name")}
             fullWidth
-            label="fullWidth"
+            label="Tên tài khoản"
             id="fullWidth"
           />
           <TextField
+            helperText={errors?.email?.message}
+            error={errors.email}
             disabled={true}
             {...register("email")}
             fullWidth
-            label="fullWidth"
+            label="email"
             id="fullWidth"
           />
-          <TextField {...register("phone")} fullWidth label="fullWidth" id="fullWidth" />
           <TextField
-            defaultValue={currentUser.birthday}
+            helperText={errors?.phone?.message}
+            error={errors.phone}
+            {...register("phone")}
+            fullWidth
+            label="Số điện thoại"
+            id="fullWidth"
+          />
+          <TextField
+            helperText={errors?.birthday?.message}
+            error={errors.birthday}
             {...register("birthday")}
             label="Ngày Sinh"
             type="date"
