@@ -1,0 +1,53 @@
+@charset "UTF-8";
+.roomDetail {
+  margin-top: 100px;
+  /* Đối với màn hình có độ rộng <= 768px */
+}
+.roomDetail .roomItem .roomHeading .roomName {
+  margin-bottom: 10px;
+  font-size: 30px;
+  font-weight: 500;
+}
+.roomDetail .roomItem .roomHeading .locationDetail {
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+}
+.roomDetail .roomItem .roomHeading .locationDetail .locationFlex {
+  align-items: center;
+  display: flex;
+  font-size: 15px;
+}
+.roomDetail .roomItem .roomHeading .locationDetail .rateItem {
+  font-weight: 500;
+}
+.roomDetail .roomItem .roomHeading .locationDetail .rateItem span {
+  text-decoration: underline;
+  padding-left: 5px;
+}
+.roomDetail .roomItem .roomHeading .locationDetail .locationIcon {
+  margin-left: 10px;
+  margin-right: 10px;
+  font-weight: 400;
+}
+.roomDetail .roomItem .roomHeading .locationDetail .locationName span {
+  margin-left: 10px;
+  text-decoration: underline;
+  font-weight: 500;
+  font-size: 15px;
+}
+.roomDetail .roomItem img {
+  width: 100%;
+  border-radius: 15px;
+}
+@media (max-width: 568px) {
+  .roomDetail .MuiGrid-item {
+    /* Đặt chiều rộng thành 100% hoặc bất kỳ giá trị nào phù hợp với thiết kế của bạn */
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .roomDetail .MuiGrid-item {
+    width: 100%;
+  }
+}

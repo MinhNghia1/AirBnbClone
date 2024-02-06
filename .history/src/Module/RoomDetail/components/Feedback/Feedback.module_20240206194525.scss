@@ -1,0 +1,40 @@
+.feedback {
+  padding: 30px 0;
+  .container{
+    line-height: 3;
+    .flexContent {
+      display: flex;
+  
+      .feedbackItem {
+        display: flex;
+  
+        img {
+          width: 90px;
+          height: 90px;
+        }
+  
+        .feedbackDetail {
+          margin-left: 15px;
+          height: 90%;
+        }
+      }
+  
+      .feedbackDesc {
+        width: 100%;
+        font-size: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 20px;
+      }
+    }
+  }
+
+  .addComment {
+    display: flex;
+  }
+
+  .btnAddComment {
+    padding-left: 53px;
+  }
+}

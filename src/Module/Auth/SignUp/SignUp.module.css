@@ -11,7 +11,7 @@
 }
 .signIn .signInContent {
   width: 60%;
-  height: 60%;
+  height: 450px;
   background-color: white;
   border-radius: 10px;
 }
@@ -60,12 +60,12 @@
 @media screen and (max-width: 769px) {
   .signIn .signInContent {
     width: 80%;
-    height: 50%;
+    height: 450px;
   }
 }
 @media screen and (max-width: 480px) {
   .signIn .signInContent {
     width: 90%;
-    height: 55%;
+    height: 400px;
   }
 }

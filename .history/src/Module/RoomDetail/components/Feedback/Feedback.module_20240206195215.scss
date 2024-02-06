@@ -1,0 +1,43 @@
+.feedback {
+  padding: 30px 0;
+  .container{
+    .flexContent {
+      margin-bottom: 10px;
+      display: flex;
+      .feedbackItem {
+        width: 20%;
+        display: flex;
+        img {
+          width: 90px;
+          height: 90px;
+        }
+  
+        .feedbackDetail {
+          margin-left: 15px;
+          padding: 5px 0px;
+          height: 90%;
+        }
+      }
+  
+      .feedbackDesc {
+        width: 80%;
+        font-size: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 20px;
+      }
+      @media screen and (min-width: 330px) and (max-width: 769px) {
+        display: none;
+      }
+    }
+  }
+
+  .addComment {
+    display: flex;
+  }
+
+  .btnAddComment {
+    padding-left: 53px;
+  }
+}

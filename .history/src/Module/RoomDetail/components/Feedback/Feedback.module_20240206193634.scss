@@ -1,0 +1,22 @@
+.feedback{
+  padding: 30px 0;
+  .flexContent{
+    display: flex;
+    line-height: 3;
+    .feedbackItem{
+      display: flex;
+      img{
+        width: 100px;
+      }
+      .feedbackDetail{
+        margin-left: 15px;
+      }
+    }
+  }
+  .addComment{
+    display: flex;
+  }
+  .btnAddComment{
+    padding-left: 53px;
+  }
+}

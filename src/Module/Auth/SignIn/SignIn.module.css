@@ -11,7 +11,7 @@
 }
 .signIn .signInContent {
   width: 50%;
-  height: 60%;
+  height: 400px;
   background-color: white;
   border-radius: 10px;
 }
@@ -85,7 +85,7 @@
 @media screen and (max-width: 768px) {
   .signIn .signInContent {
     width: 80%;
-    height: 50%;
+    height: 350px;
   }
   .signIn .signInContent .signInFooterRight p {
     display: none;
