@@ -52,13 +52,14 @@ export default function ModalUpdateInfo({
     handleSubmit,
     formState: { errors },
     control,
+    reset,
   } = useForm({
     defaultValues: {
       name: `${currentUser.name}`,
       email: `${currentUser.email}`,
       phone: `${currentUser.phone}`,
       birthday: `${currentUser.birthday}`,
-      gender: `${currentUser.gender ? "Nam" : "Nữ"}`,
+      gender: `${currentUser.gender}`,
     },
     resolver: yupResolver(validateField),
   });
@@ -96,6 +97,15 @@ export default function ModalUpdateInfo({
       label: "Nữ",
     },
   ];
+  React.useEffect(() => {
+    reset({
+      name: `${currentUser.name}`,
+      email: `${currentUser.email}`,
+      phone: `${currentUser.phone}`,
+      birthday: `${currentUser.birthday}`,
+      gender: `${currentUser.gender}`,
+    });
+  }, []);
   return (
     <div>
       <Modal
@@ -135,7 +145,6 @@ export default function ModalUpdateInfo({
             control={control}
             name="gender"
             rules={{ required: "Vui lòng không để trống" }}
-            defaultValue={currentUser.gender ? "Nam" : "Nữ"}
             render={({ field }) => (
               <TextField
                 {...field}

@@ -1,10 +1,12 @@
-.infoRoomBooking{
+.infoRoomBooking {
     margin-top: 100px;
-    .container{
+
+    .container {
         width: 95%;
         margin: auto;
         padding-bottom: 30px;
-        .titlePage{
+
+        .titlePage {
             font-size: 30px;
             font-weight: bold;
             color: var(--primary);
@@ -12,17 +14,24 @@
             border-bottom: 1px solid rgb(207, 207, 207);
 
         }
-        .content{
+
+        .content {
             display: grid;
             grid-template-columns: 2fr 1fr;
-           
-            .bookingLeft{
+            width: 100%;
+
+            .bookingLeft {
+                max-height: calc(100vh - 150px);
+                overflow-y: auto;
+                height: 100%;
+                width: 100%;
                 padding-top: 10px;
                 margin-right: 20px;
-                .cardBooking{
+
+                .cardBooking {
                     display: grid;
                     grid-template-columns: 1fr 4fr;
-                    width: 100%;
+                    width: 99%;
                     max-height: 180px;
                     height: 100%;
                     border: 1px solid rgb(234, 228, 228);
@@ -30,98 +39,123 @@
                     margin: 10px 0px;
                     transition: all 0.7s;
                     cursor: pointer;
-                    &:hover{
+
+                    &:hover {
                         box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
                     }
-                    .cardBookingTop{
+
+                    .cardBookingTop {
                         width: 100%;
-                        img{
+
+                        img {
                             background-position: center;
                             background-size: cover;
                             background-repeat: no-repeat;
                             background-size: cover;
                             object-fit: cover;
-                            height: 180px;
+                            height: 100%;
                             width: 100%;
                             border-top-left-radius: 10px;
                             border-bottom-left-radius: 10px;
                         }
                     }
-                    .cardBookingBody{
-                        padding: 10px;
+
+                    .cardBookingBody {
+                        padding: 0px 10px;
                         height: 100%;
-                        .cardBookingBodyTitle{
+
+                        .cardBookingBodyTitle {
                             display: flex;
                             justify-content: space-between;
                             align-items: center;
                             padding-bottom: 10px;
                             border-bottom: 1px solid rgb(234, 228, 228);
-                            .cardBookingBodyTitleLeft{
-                                h2{
+
+                            .cardBookingBodyTitleLeft {
+                                h2 {
+                                    margin: 0px;
+                                    overflow: hidden;
+                                        text-overflow: ellipsis;
+                                        display: -webkit-box;
+                                        -webkit-line-clamp: 1;
+                                       
+                                        -webkit-box-orient: vertical;
+                                }
+
+                                p {
+                                    margin-left: 10px;
                                     margin: 0px;
                                 }
-                                p{
-                                    margin-left: 10px;
-                                    margin:0px;
-                                }
                             }
-                            .cardBookingBodyTitleRight{
+
+                            .cardBookingBodyTitleRight {
                                 display: flex;
                                 align-items: center;
                                 white-space: nowrap;
                             }
                         }
-                        .cardBookingBodyContent{
-                            h3{
+
+                        .cardBookingBodyContent {
+
+                            padding: 10px 0px;
+
+                            h3 {
                                 margin: 0px 0px 10px 0px;
                             }
-                            .cardBookingBodyContentItem{
+
+                            .cardBookingBodyContentItem {
                                 display: flex;
                                 justify-content: flex-start;
                                 align-items: center;
-                                .itemIcon{
+
+                                .itemIcon {
                                     display: grid;
                                     grid-template-columns: repeat(8, 1fr);
                                     gap: 20px;
-                                    svg{
+
+                                    svg {
                                         font-size: 25px;
                                     }
                                 }
                             }
                         }
-                        
-                        
+
+
                     }
                 }
             }
-            .bookingRight{
-                width: 95%;         
-                margin-bottom: 10px;  
-                .bookingRightCard{
+
+            .bookingRight {
+                width: 95%;
+                margin-bottom: 10px;
+
+                .bookingRightCard {
                     border: 1px solid rgb(233, 219, 219);
                     margin-top: 20px;
                     padding: 10px;
                     border-radius: 10px;
                     transition: all 0.7s;
                     position: sticky;
-                    top: 110px; 
+                    top: 110px;
                     width: 100%;
                     overflow: hidden;
-               
-                    .bookingRightCardTop{
-                        p{
+
+                    .bookingRightCardTop {
+                        p {
                             margin: 0px;
                             font-size: 25px;
                             font-weight: bold;
                         }
                     }
-                    .bookingRightCardBody{
-                        p{
+
+                    .bookingRightCardBody {
+                        p {
                             color: #5F6875;
                         }
                     }
-                    .bookingRightCardBottom{
-                        button{
+
+                    .bookingRightCardBottom {
+                        button {
                             padding: 15px 25px;
                             background-color: white;
                             border: 1px solid gray;
@@ -130,45 +164,51 @@
                             border-radius: 10px;
                             transition: all 0.9s;
                             cursor: pointer;
-                            &:hover{
+
+                            &:hover {
                                 background-color: gray;
                                 color: white;
                             }
                         }
                     }
                 }
-               
+
             }
         }
-        
+
     }
 }
+
 @media screen and (max-width: 768px) {
-    .infoRoomBooking{
+    .infoRoomBooking {
         margin-top: 100px;
-        .container{
+
+        .container {
             width: 95%;
             margin: auto;
             padding-bottom: 30px;
-            .titlePage{
+
+            .titlePage {
                 font-size: 30px;
                 font-weight: bold;
                 color: var(--primary);
                 padding-bottom: 10px;
                 border-bottom: 1px solid rgb(207, 207, 207);
-    
+
             }
-            .content{
+
+            .content {
                 display: grid;
-                grid-template-columns: 1fr ;
-               
-                .bookingLeft{
+                grid-template-columns: 1fr;
+
+                .bookingLeft {
                     padding-top: 10px;
                     margin-right: 20px;
-                    .cardBooking{
+                    
+                    .cardBooking {
                         display: grid;
                         grid-template-columns: 1fr 4fr;
-                        width: 100%;
+                        width: 99%;
                         max-height: 180px;
                         height: 100%;
                         border: 1px solid rgb(234, 228, 228);
@@ -176,12 +216,15 @@
                         margin: 10px 0px;
                         transition: all 0.7s;
                         cursor: pointer;
-                        &:hover{
+
+                        &:hover {
                             box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
                         }
-                        .cardBookingTop{
+
+                        .cardBookingTop {
                             width: 100%;
-                            img{
+
+                            img {
                                 background-position: center;
                                 background-size: cover;
                                 background-repeat: no-repeat;
@@ -193,80 +236,94 @@
                                 border-bottom-left-radius: 10px;
                             }
                         }
-                        .cardBookingBody{
+
+                        .cardBookingBody {
                             padding: 10px;
                             height: 100%;
-                            .cardBookingBodyTitle{
+
+                            .cardBookingBodyTitle {
                                 display: flex;
                                 justify-content: space-between;
                                 align-items: center;
                                 padding-bottom: 10px;
                                 border-bottom: 1px solid rgb(234, 228, 228);
-                                .cardBookingBodyTitleLeft{
-                                    h2{
+
+                                .cardBookingBodyTitleLeft {
+                                    h2 {
+                                        margin: 0px;
+                                        
+                                    }
+
+                                    p {
+                                        margin-left: 10px;
                                         margin: 0px;
                                     }
-                                    p{
-                                        margin-left: 10px;
-                                        margin:0px;
-                                    }
                                 }
-                                .cardBookingBodyTitleRight{
+
+                                .cardBookingBodyTitleRight {
                                     display: flex;
                                     align-items: center;
                                 }
                             }
-                            .cardBookingBodyContent{
-                                h3{
+
+                            .cardBookingBodyContent {
+                                h3 {
                                     margin: 0px 0px 10px 0px;
                                 }
-                                .cardBookingBodyContentItem{
+
+                                .cardBookingBodyContentItem {
                                     display: flex;
                                     justify-content: flex-start;
                                     align-items: center;
-                                    .itemIcon{
+
+                                    .itemIcon {
                                         display: grid;
                                         grid-template-columns: repeat(8, 1fr);
                                         gap: 20px;
-                                        svg{
+
+                                        svg {
                                             font-size: 25px;
                                         }
                                     }
                                 }
                             }
-                            
-                            
+
+
                         }
                     }
                 }
-                .bookingRight{
-                    width: 95%;         
-                    margin-bottom: 10px;  
-                    .bookingRightCard{
+
+                .bookingRight {
+                    width: 95%;
+                    margin-bottom: 10px;
+
+                    .bookingRightCard {
                         border: 1px solid rgb(233, 219, 219);
                         margin-top: 20px;
                         padding: 10px;
                         border-radius: 10px;
                         transition: all 0.7s;
                         position: sticky;
-                        top: 110px; 
+                        top: 110px;
                         width: 100%;
                         overflow: hidden;
-                   
-                        .bookingRightCardTop{
-                            p{
+
+                        .bookingRightCardTop {
+                            p {
                                 margin: 0px;
                                 font-size: 25px;
                                 font-weight: bold;
                             }
                         }
-                        .bookingRightCardBody{
-                            p{
+
+                        .bookingRightCardBody {
+                            p {
                                 color: #5F6875;
                             }
                         }
-                        .bookingRightCardBottom{
-                            button{
+
+                        .bookingRightCardBottom {
+                            button {
                                 padding: 15px 25px;
                                 background-color: white;
                                 border: 1px solid gray;
@@ -275,63 +332,71 @@
                                 border-radius: 10px;
                                 transition: all 0.9s;
                                 cursor: pointer;
-                                &:hover{
+
+                                &:hover {
                                     background-color: gray;
                                     color: white;
                                 }
                             }
                         }
                     }
-                   
+
                 }
             }
-            
+
         }
     }
 }
+
 @media screen and (max-width: 468px) {
-    .infoRoomBooking{
+    .infoRoomBooking {
         margin-top: 100px;
-        .container{
+
+        .container {
             width: 95%;
             margin: auto;
             padding-bottom: 30px;
-            .titlePage{
+
+            .titlePage {
                 font-size: 30px;
                 font-weight: bold;
                 color: var(--primary);
                 padding-bottom: 10px;
                 border-bottom: 1px solid rgb(207, 207, 207);
-    
+
             }
-            .content{
+
+            .content {
                 display: grid;
-                grid-template-columns: 1fr ;
+                grid-template-columns: 1fr;
                 justify-content: center;
                 align-items: center;
-               
-                .bookingLeft{
+
+                .bookingLeft {
                     padding-top: 10px;
                     margin-right: 20px;
-                   width: 100%;
-                    .cardBooking{
-                    display: grid;
-                    grid-template-columns: 1fr;
                     width: 100%;
 
-                    max-height: 350px;
-                    height: 100%;
-                    border: 1px solid rgb(234, 228, 228);
-                    border-radius: 10px;
-                    margin: 10px 0px;
-                    transition: all 0.7s;
-                    cursor: pointer;
-                        &:hover{
+                    .cardBooking {
+                        display: grid;
+                        grid-template-columns: 1fr;
+                        width: 99%;
+                        max-height: 350px;
+                        height: 100%;
+                        border: 1px solid rgb(234, 228, 228);
+                        border-radius: 10px;
+                        margin: 10px 0px;
+                        transition: all 0.7s;
+                        cursor: pointer;
+
+                        &:hover {
                             box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
                         }
-                        .cardBookingTop{
+
+                        .cardBookingTop {
                             width: 100%;
-                            img{
+
+                            img {
                                 background-position: center;
                                 background-size: cover;
                                 background-repeat: no-repeat;
@@ -343,10 +408,35 @@
                                 border-top-left-radius: 10px;
                             }
                         }
+                        .cardBookingBody {
+                            padding: 10px;
+                            height: 100%;
+
+                            .cardBookingBodyTitle {
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                padding-bottom: 10px;
+                                border-bottom: 1px solid rgb(234, 228, 228);
+                                .cardBookingBodyTitleLeft {
+                                    h2 {
+                                        margin: 0px;
+                                        overflow: hidden;
+                                        text-overflow: ellipsis;
+                                        display: -webkit-box;
+                                        -webkit-line-clamp: 2;
+                                       
+                                        -webkit-box-orient: vertical;
+                                    }
+        
+                                    
+                                }
+                            }
+                        }
                     }
                 }
-            } 
-            
+            }
+
         }
     }
 }

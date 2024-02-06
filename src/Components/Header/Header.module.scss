@@ -152,7 +152,31 @@
         }
     }
 }
-@media screen and (max-width: 635px) {
+@media screen and (max-width: 768px) {
+    
+    .container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .logoBnb{
+        display: flex;
+       
+        align-items: center;
+        }
+        
+        .InfoUser{        
+            p{
+                display: none;
+                padding: 10px 20px;
+                transition: all 0.5s;
+                cursor: pointer;
+                font-size: 14px;
+                white-space: nowrap;
+            }
+        }
+    }
+}
+@media screen and (max-width: 480px) {
     .header{
         .container{
             display: flex;
@@ -161,11 +185,12 @@
             align-items: center;
             height: 100%;
             .logoBnb{
-           display: none;
+                display: none;
             }
             .findRoomDrop{
                 z-index: 20;
                 margin-left: 0px;
+                order: 2;
                 .findRoomUp{
                     display: flex;
                     
@@ -222,12 +247,38 @@
                     }
                 }
             }
+            .formInputDropdown{
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                left: 0;
+                width: 100vw;  
+                z-index: 10;
+                transition: all 0.3s;
+                padding-bottom: 15px;
+                box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px; /* hoặc màu đường viền mong muốn */
+                padding-top: 30px;
+                background-color: white;
+                display: flex;
+                justify-content: center;
+            }
+            .formInputDropdownBlock{
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100vw;  
+                z-index: 10;
+                transition: all 0.3s;
+                padding-bottom: 15px;
+                box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px; /* hoặc màu đường viền mong muốn */
+                padding-top: 11rem;
+                background-color: white;
+                display: flex;
+                justify-content: center;
+            }
             .InfoUser{
                 display: block;
-                position: absolute;
-                
-                top: 200px;
-                right: 5px;
+                order: 1;
                 p{
                     display: none;
                 }
@@ -238,39 +289,5 @@
         }
     }   
 }
-@media screen and (max-width: 768px) {
-    
-        .container{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            .logoBnb{
-            display: flex;
-           
-            align-items: center;
-            }
-            
-            .InfoUser{        
-                p{
-                    display: none;
-                    padding: 10px 20px;
-                    transition: all 0.5s;
-                    cursor: pointer;
-                    font-size: 14px;
-                    white-space: nowrap;
-                }
-            }
-        }
-}
-@media screen and (max-width: 1200px) {
-    .header{
-        .container{
-            .findRoomDrop{
-                display: flex;
-                z-index: 20;
-                margin-left: 0px;
-            }
-        }
-    }
-    
-}
+
+

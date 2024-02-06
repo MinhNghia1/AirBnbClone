@@ -14,7 +14,6 @@ import ModalAdmin from "../ModalAdmin/ModalAdmin";
 import { IoReload } from "react-icons/io5";
 import Button from "@mui/material/Button";
 import swal from "sweetalert2";
-import { toast } from "react-toastify";
 import LoadingPage from "../../../../../Components/LoadingPage/LoadingPage";
 export default function ManagaeUser() {
   const [numberPage, setNumberPage] = useState(1);
@@ -25,7 +24,7 @@ export default function ManagaeUser() {
   const [isOpenModal, setIsopenModal] = useState(false);
   const [userEdit, setUserEdit] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
-  const [loadingPage, setLoadingPage] = useState(false);
+  const [loadingPage, setLoadingPage] = useState(true);
   const timer = useRef();
   const handleSearch = (evt) => {
     setSearchTerm(evt.target.value);
@@ -46,7 +45,7 @@ export default function ManagaeUser() {
   const handFindUser = async (keyWord) => {
     try {
       const resp = await findUser(keyWord);
-      console.log(resp);
+
       if (resp) {
         setInfoUser(resp);
       }
@@ -60,10 +59,8 @@ export default function ManagaeUser() {
   }, [numberPage]);
   const getList = async () => {
     try {
-      setLoadingPage(true);
       const resp = await getListUser();
       const numberUser = Math.ceil(resp.length / 8);
-
       setTotalPages(numberUser);
     } catch (error) {
       console.error(error);

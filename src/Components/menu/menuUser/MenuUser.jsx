@@ -51,8 +51,8 @@ export default function MenuUser() {
     }).then((result) => {
       if (result.isConfirmed) {
         localStorage.removeItem("currenuser");
-        navigate("/");
         window.location.reload();
+        navigate("/");
       }
     });
   };
